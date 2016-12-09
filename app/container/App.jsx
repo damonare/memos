@@ -44,7 +44,12 @@ class App extends Component {
     }
 }
 App.propTypes = {
-    todolist: PropTypes.array.isRequired
+    todolist:PropTypes.arrayOf(PropTypes.shape({
+    todo: PropTypes.string.isRequired,
+    istodo: PropTypes.bool.isRequired,
+    doing: PropTypes.bool.isRequired,
+    done: PropTypes.bool.isRequired,
+  }).isRequired).isRequired
 };
 function mapStateToProps(state) {
     return {todolist: state.todolist};
