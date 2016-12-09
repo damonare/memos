@@ -13,8 +13,7 @@ class App extends Component {
     }
     handleFinsh(rows) {
         this.setState({todolist: rows});
-        console.log(JSON.stringify(rows))
-        localStorage.setItem("todo", JSON.stringify(rows));
+        localStorage.setItem("todos", JSON.stringify(rows));
     }
     render() {
         const {dispatch, todolist} = this.props;

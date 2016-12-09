@@ -27,7 +27,6 @@ class Header extends Component {
             this.props.onAdd(text);
             this.setState({hidden: true})
         } else {
-            console.log(this.state.hidden)
             this.setState({hidden: false})
         }
         inputNode.value = '';

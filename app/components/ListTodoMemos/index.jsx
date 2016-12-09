@@ -30,24 +30,18 @@ class ListTodoMemos extends Component {
                         {number}
                     </span>
                 </h2>
-
                 <ul>
                     {
-                        this.props.todolist.map((item, i) => {
+                        this.props.todolist.filter((item)=>item.istodo).map((item, i) => {
                         return (
-                            <li key={i} style={{textDecoration:item.istodo?"line-through":"",opacity:item.istodo?"0.5":''}}>
-                                <select className="" name="" data-key={i} onChange={this.handleChange.bind(this)}>
-                            		<option >--请选择--</option>
-                            		<option value="0">归为待办</option>
-                            		<option value="1">正在进行</option>
-                            		<option value="2">已完成</option>
-                            	</select>
+                            <li key={i} style={{textDecoration:item.done?"line-through":"",opacity:item.done?"0.5":''}}>
+                                <input type="checkbox" checked={item.done} onChange={this.handleChange.bind(this)} data-key={i}/>
                                 <p>{item.todo}</p>
                                 <button className="destroy" data-key={i} onClick={this.handleDel.bind(this)}>-</button>
                             </li>
                         )
                     })
-                }
+                    }
                 </ul>
             </main>
         )
