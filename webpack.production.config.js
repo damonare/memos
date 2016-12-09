@@ -7,7 +7,7 @@ module.exports = {
     devtool: false,
     entry: [
         path.resolve(__dirname, './app/main.jsx')
-    ],
+    ], 
     output: {
         path: __dirname + '/build',
         publicPath: '/',

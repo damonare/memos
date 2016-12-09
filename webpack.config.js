@@ -10,7 +10,7 @@ module.exports = {
         progress: true,
         contentBase: './app',
         port: 8080
-    },
+    }, 
     entry: [
         'webpack/hot/dev-server',
         'webpack-dev-server/client?http://localhost:8080',
