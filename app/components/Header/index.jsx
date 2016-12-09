@@ -16,7 +16,6 @@ class Header extends Component {
         e.preventDefault();
         const inputNode = findDOMNode(this.refs.inputnew);
         const text = inputNode.value.trim();
-        console.log(text)
         this.props.onSearch(text);
         inputNode.value = '';
     }

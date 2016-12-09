@@ -142,10 +142,15 @@ function todolist(state = todos, action) {
                 state.splice(action.index, 1),
                 ...state.slice(parseInt(action.index) + 1)
             ];
+            /*
+            *  搜索
+            */
         case Search:
         let text=action.text;
-        console.log(text);
-            return state.filter(item=>item.todo..indexOf("Hello"));
+        let reg=eval("/"+text+"/gi");
+        console.log(text.split(""));
+        console.log(state.filter(item=> item.todo.match(reg)))
+            return state.filter(item=> item.todo.match(reg));
         default:
             return state;
     }
