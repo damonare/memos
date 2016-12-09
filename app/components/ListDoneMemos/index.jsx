@@ -34,13 +34,15 @@ class ListDoneMemos extends Component {
                 <ul>
                     {
                         this.props.todolist.filter((item)=>item.done).map((item, i) => {
-                        return (
-                            <li key={i} style={{textDecoration:item.done?"line-through":"",opacity:item.done?"0.5":''}}>
-                                <input type="checkbox" checked={item.done} onChange={this.handleChange.bind(this)} data-key={i}/>
-                                <p>{item.todo}</p>
-                                <button className="destroy" data-key={i} onClick={this.handleDel.bind(this)}>-</button>
-                            </li>
-                        )
+                        if(item.done){
+                            return (
+                                <li key={i} style={{textDecoration:item.done?"line-through":"",opacity:item.done?"0.5":''}}>
+                                    <input type="checkbox" checked={item.done} onChange={this.handleChange.bind(this)} data-key={i}/>
+                                    <p>{item.todo}</p>
+                                    <button className="destroy" data-key={i} onClick={this.handleDel.bind(this)}>-</button>
+                                </li>
+                            )
+                        }
                     })
                     }
                 </ul>

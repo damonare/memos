@@ -33,13 +33,15 @@ class ListDoingMemos extends Component {
                 <ul>
                     {
                         this.props.todolist.filter((item)=>item.doing).map((item, i) => {
-                        return (
-                            <li key={i} style={{textDecoration:item.done?"line-through":"",opacity:item.done?"0.5":''}}>
-                                <input type="checkbox" checked={item.done} onChange={this.handleChange.bind(this)} data-key={i}/>
-                                <p>{item.todo}</p>
-                                <button className="destroy" data-key={i} onClick={this.handleDel.bind(this)}>-</button>
-                            </li>
-                        )
+                        if(item.doing){
+                            return (
+                                <li key={i} style={{opacity:item.doing?"1":''}}>
+                                    <input type="checkbox" checked={item.doing} disabled onChange={this.handleChange.bind(this)} data-key={i}/>
+                                    <p>{item.todo}</p>
+                                    <button className="destroy" data-key={i} onClick={this.handleDel.bind(this)}>-</button>
+                                </li>
+                            )
+                        }
                     })
                     }
                 </ul>

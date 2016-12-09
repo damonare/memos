@@ -10,14 +10,14 @@ let todos;
 function todolist(state = todos, action) {
     switch (action.type) {
         case Add_Todo:
-        localStorage.setItem('todos',JSON.stringify([
-            ...state, {
-                todo: action.text,
-                istodo: true,
-                doing: false,
-                done: false
-            }
-        ]))
+            localStorage.setItem('todos', JSON.stringify([
+                ...state, {
+                    todo: action.text,
+                    istodo: true,
+                    doing: false,
+                    done: false
+                }
+            ]));
             return [
                 ...state, {
                     todo: action.text,

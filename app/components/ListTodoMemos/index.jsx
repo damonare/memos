@@ -10,7 +10,8 @@ class ListTodoMemos extends Component {
     }
     handleChange(e){
         let changeIndex=e.target.getAttribute("data-key");
-        this.props.todolist[changeIndex].done=e.target.checked;
+        this.props.todolist[changeIndex].doing=e.target.checked;
+        this.props.todolist[changeIndex].istodo=!e.target.checked;
         this.props.onFinsh(this.props.todolist);
     }
     render() {
@@ -32,14 +33,16 @@ class ListTodoMemos extends Component {
                 </h2>
                 <ul>
                     {
-                        this.props.todolist.filter((item)=>item.istodo).map((item, i) => {
-                        return (
-                            <li key={i} style={{textDecoration:item.done?"line-through":"",opacity:item.done?"0.5":''}}>
-                                <input type="checkbox" checked={item.done} onChange={this.handleChange.bind(this)} data-key={i}/>
-                                <p>{item.todo}</p>
-                                <button className="destroy" data-key={i} onClick={this.handleDel.bind(this)}>-</button>
-                            </li>
-                        )
+                        this.props.todolist.map((item, i) => {
+                        if(item.istodo){
+                            return (
+                                <li key={i} style={{opacity:item.istodo?"0.5":''}}>
+                                    <input type="checkbox" checked={!item.istodo} onChange={this.handleChange.bind(this)} data-key={i}/>
+                                    <p>{item.todo}</p>
+                                    <button className="destroy" data-key={i} onClick={this.handleDel.bind(this)}>-</button>
+                                </li>
+                            )
+                        }
                     })
                     }
                 </ul>
