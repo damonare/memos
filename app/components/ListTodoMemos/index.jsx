@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component,PropTypes} from 'react';
 import {findDOMNode} from 'react-dom';
 class ListTodoMemos extends Component {
     constructor(props) {
@@ -58,5 +58,9 @@ class ListTodoMemos extends Component {
             </main>
         )
     }
+}
+ListTodoMemos.propTypes={
+    onTodoToDoing: PropTypes.func.isRequired,
+    onDel:PropTypes.func.isRequired
 }
 export default ListTodoMemos;

@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component,PropTypes} from 'react';
 class ListDoneMemos extends Component {
     constructor(props) {
         super(props);
@@ -54,5 +54,9 @@ class ListDoneMemos extends Component {
             </main>
         )
     }
+}
+ListDoneMemos.propTypes={
+    onDoneToDoing: PropTypes.func.isRequired,
+    onDel:PropTypes.func.isRequired
 }
 export default ListDoneMemos;
