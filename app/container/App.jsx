@@ -6,30 +6,45 @@ import ListDoingMemos from '../components/ListDoingMemos';
 import ListDoneMemos from '../components/ListDoneMemos';
 import './index.less';
 import '../static/css/reset.css';
-import {addTodo, changeTodoToDoing, changeDoingToDone, search} from '../actions';
+import {
+    addTodo,
+    deleteTodo,
+    changeTodoToDoing,
+    changeDoingToDone,
+    changeDoingToTodo,
+    changeDoneToDoing,
+    search} from '../actions';
 class App extends Component {
     constructor(props) {
         super(props);
-    }
-    handleFinsh(rows) {
-        this.setState({todolist: rows});
-        localStorage.setItem("todos", JSON.stringify(rows));
     }
     render() {
         const {dispatch, todolist} = this.props;
         return (
             <div>
-                <Header onAdd ={text => dispatch(addTodo(text))} onSearch={text => dispatch(search(text))} todolist={todolist} onKeyUp={this.props.onKeyUp}/>
-                <ListTodoMemos onDel={this.handleFinsh.bind(this)} todolist={todolist} onFinsh={this.handleFinsh.bind(this)}/>
-                <ListDoingMemos todolist={todolist} onDel={this.handleFinsh.bind(this)} onFinsh={this.handleFinsh.bind(this)}/>
-                <ListDoneMemos todolist={todolist}
-                    onDel={this.handleFinsh.bind(this)} onFinsh={this.handleFinsh.bind(this)}/>
+                <Header
+                    todolist={todolist}
+                    onAdd ={text => dispatch(addTodo(text))}
+                    onSearch={text => dispatch(search(text))}
+                    onKeyUp={this.props.onKeyUp}/>
+                <ListTodoMemos
+                    todolist={todolist}
+                    onDel={index=>dispatch(deleteTodo(index))}  onTodoToDoing={index=>dispatch(changeTodoToDoing(index))}
+                    />
+                <ListDoingMemos
+                    todolist={todolist}
+                    onDel={index=>dispatch(deleteTodo(index))} onDoingToDone={index=>dispatch(changeDoingToDone(index))}
+                    onDoingToTodo={index=>dispatch(changeDoingToTodo(index))}
+                    />
+                <ListDoneMemos
+                    todolist={todolist}
+                    onDel={index=>dispatch(deleteTodo(index))} onDoneToDoing={index=>dispatch(changeDoneToDoing(index))}/>
             </div>
         );
     }
 }
 App.propTypes = {
-    todolist: PropTypes.arrayOf(PropTypes.shape({todo: PropTypes.string.isRequired, istodo: PropTypes.bool.isRequired, doing: PropTypes.bool.isRequired, done: PropTypes.bool.isRequired}))
+    todolist: PropTypes.array.isRequired
 };
 function mapStateToProps(state) {
     return {todolist: state.todolist};

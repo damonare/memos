@@ -5,19 +5,16 @@ class ListTodoMemos extends Component {
     }
     handleDel(e) {
         let delindex = e.target.getAttribute("data-key");
-        this.props.todolist.splice(delindex, 1);
-        this.props.onDel(this.props.todolist);
+        this.props.onDel(delindex);
     }
-    handleChange(e){
-        let changeIndex=e.target.getAttribute("data-key");
-        this.props.todolist[changeIndex].doing=e.target.checked;
-        this.props.todolist[changeIndex].istodo=!e.target.checked;
-        this.props.onFinsh(this.props.todolist);
+    handleChange(e) {
+        let changeIndex = e.target.getAttribute("data-key");
+        this.props.onTodoToDoing(changeIndex);
     }
     render() {
-        let number=0;
-        this.props.todolist.map((item)=>{
-            if(item.istodo){
+        let number = 0;
+        this.props.todolist.map((item) => {
+            if (item.istodo) {
                 number++;
             }
         })
@@ -32,11 +29,14 @@ class ListTodoMemos extends Component {
                     </span>
                 </h2>
                 <ul>
-                    {
-                        this.props.todolist.map((item, i) => {
-                        if(item.istodo){
+                    {this.props.todolist.map((item, i) => {
+                        if (item.istodo) {
                             return (
-                                <li key={i} style={{opacity:item.istodo?"0.5":''}}>
+                                <li key={i} style={{
+                                    opacity: item.istodo
+                                        ? "0.7"
+                                        : ''
+                                }}>
                                     <input type="checkbox" checked={!item.istodo} onChange={this.handleChange.bind(this)} data-key={i}/>
                                     <p>{item.todo}</p>
                                     <button className="destroy" data-key={i} onClick={this.handleDel.bind(this)}>-</button>
@@ -44,7 +44,7 @@ class ListTodoMemos extends Component {
                             )
                         }
                     })
-                    }
+}
                 </ul>
             </main>
         )

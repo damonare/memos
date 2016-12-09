@@ -16,6 +16,7 @@ class Header extends Component {
         e.preventDefault();
         const inputNode = findDOMNode(this.refs.inputnew);
         const text = inputNode.value.trim();
+        console.log(text)
         this.props.onSearch(text);
         inputNode.value = '';
     }
@@ -35,7 +36,7 @@ class Header extends Component {
         return (
             <header>
                 <section>
-                    <form>
+                    <form onSubmit={e => this.handleClick(e)}>
                         <label htmlFor="new-todo">备忘录</label>
                         <input onKeyUp={this.handleKeyUp.bind(this)}  ref="inputnew" type="text" placeholder="新建备忘录" defaultValue={this.props.text} id="new-todo"/>
                         <div>

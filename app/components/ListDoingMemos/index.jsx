@@ -5,21 +5,15 @@ class ListDoingMemos extends Component {
     }
     handleDel(e) {
         let delindex = e.target.getAttribute("data-key");
-        this.props.todolist.splice(delindex, 1);
-        this.props.onDel(this.props.todolist);
+        this.props.onDel(delindex);
     }
-    handleChange(e){
-        let changeIndex=e.target.getAttribute("data-key");
-        console.log(changeIndex)
-        this.props.todolist[changeIndex].istodo=!e.target.checked;
-        this.props.todolist[changeIndex].doing=e.target.checked;
-        this.props.onFinsh(this.props.todolist);
+    handleToTodo(e) {
+        let changeIndex = e.target.getAttribute("data-key");
+        this.props.onDoingToTodo(changeIndex);
     }
     handleToDone(e){
         let changeIndex=e.target.getAttribute("data-key");
-        this.props.todolist[changeIndex].doing=false;
-        this.props.todolist[changeIndex].done=true;
-        this.props.onFinsh(this.props.todolist);
+        this.props.onDoingToDone(changeIndex);
     }
     render() {
         let number=0;
@@ -44,7 +38,7 @@ class ListDoingMemos extends Component {
                         if(item.doing){
                             return (
                                 <li key={i} style={{opacity:item.doing?"1":''}}>
-                                    <input type="checkbox" checked={item.doing} onChange={this.handleChange.bind(this)} data-key={i}/>
+                                    <input type="checkbox" checked={item.doing} onChange={this.handleToTodo.bind(this)} data-key={i}/>
                                     <p data-key={i} onClick={this.handleToDone.bind(this)}>{item.todo}</p>
                                     <button className="destroy" data-key={i} onClick={this.handleDel.bind(this)}>-</button>
                                 </li>
