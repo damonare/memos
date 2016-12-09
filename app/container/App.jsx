@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import Header from '../components/Header';
 import ListDoingMemos from '../components/ListDoingMemos';
 import ListDoneMemos from '../components/ListDoneMemos';
-import './index.less';
+import './App.less';
 import '../static/css/reset.css';
 import {
     addTodo,
