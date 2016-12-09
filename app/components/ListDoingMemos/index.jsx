@@ -40,7 +40,7 @@ class ListDoingMemos extends Component {
                                 <li key={i} style={{opacity:item.doing?"1":''}}>
                                     <input type="checkbox" checked={item.doing} onChange={this.handleToTodo.bind(this)} data-key={i}/>
                                     <p data-key={i} onClick={this.handleToDone.bind(this)}>{item.todo}</p>
-                                    <button className="destroy" data-key={i} onClick={this.handleDel.bind(this)}>-</button>
+                                    <button className="destroy" data-key={i} onClick={this.handleDel.bind(this)}>×</button>
                                 </li>
                             )
                         }

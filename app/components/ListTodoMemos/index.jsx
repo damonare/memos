@@ -39,7 +39,7 @@ class ListTodoMemos extends Component {
                                 }}>
                                     <input type="checkbox" checked={!item.istodo} onChange={this.handleChange.bind(this)} data-key={i}/>
                                     <p>{item.todo}</p>
-                                    <button className="destroy" data-key={i} onClick={this.handleDel.bind(this)}>-</button>
+                                    <button className="destroy" data-key={i} onClick={this.handleDel.bind(this)}>×</button>
                                 </li>
                             )
                         }

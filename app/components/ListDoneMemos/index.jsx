@@ -36,7 +36,7 @@ class ListDoneMemos extends Component {
                                 <li key={i} style={{textDecoration:item.done?"line-through":"",opacity:item.done?"0.4":''}}>
                                     <input type="checkbox" checked={item.done} disabled/>
                                     <p data-key={i} onClick={this.handleToDoing.bind(this)}>{item.todo}</p>
-                                    <button className="destroy" data-key={i} onClick={this.handleDel.bind(this)}>-</button>
+                                    <button className="destroy" data-key={i} onClick={this.handleDel.bind(this)}>×</button>
                                 </li>
                             )
                         }
