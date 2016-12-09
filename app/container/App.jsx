@@ -21,8 +21,9 @@ class App extends Component {
             <div>
                 <Header onAdd ={text => dispatch(addTodo(text))} onSearch={text => dispatch(search(text))} todolist={todolist} onKeyUp={this.props.onKeyUp}/>
                 <ListTodoMemos onDel={this.handleFinsh.bind(this)} todolist={todolist} onFinsh={this.handleFinsh.bind(this)}/>
-                <ListDoingMemos todolist={todolist}/>
-                <ListDoneMemos todolist={todolist} />
+                <ListDoingMemos todolist={todolist} onDel={this.handleFinsh.bind(this)} onFinsh={this.handleFinsh.bind(this)}/>
+                <ListDoneMemos todolist={todolist}
+                    onDel={this.handleFinsh.bind(this)} onFinsh={this.handleFinsh.bind(this)}/>
             </div>
         );
     }

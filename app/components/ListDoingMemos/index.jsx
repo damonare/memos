@@ -10,7 +10,15 @@ class ListDoingMemos extends Component {
     }
     handleChange(e){
         let changeIndex=e.target.getAttribute("data-key");
-        this.props.todolist[changeIndex].done=e.target.checked;
+        console.log(changeIndex)
+        this.props.todolist[changeIndex].istodo=!e.target.checked;
+        this.props.todolist[changeIndex].doing=e.target.checked;
+        this.props.onFinsh(this.props.todolist);
+    }
+    handleToDone(e){
+        let changeIndex=e.target.getAttribute("data-key");
+        this.props.todolist[changeIndex].doing=false;
+        this.props.todolist[changeIndex].done=true;
         this.props.onFinsh(this.props.todolist);
     }
     render() {
@@ -32,12 +40,12 @@ class ListDoingMemos extends Component {
                 </h2>
                 <ul>
                     {
-                        this.props.todolist.filter((item)=>item.doing).map((item, i) => {
+                        this.props.todolist.map((item, i) => {
                         if(item.doing){
                             return (
                                 <li key={i} style={{opacity:item.doing?"1":''}}>
-                                    <input type="checkbox" checked={item.doing} disabled onChange={this.handleChange.bind(this)} data-key={i}/>
-                                    <p>{item.todo}</p>
+                                    <input type="checkbox" checked={item.doing} onChange={this.handleChange.bind(this)} data-key={i}/>
+                                    <p data-key={i} onClick={this.handleToDone.bind(this)}>{item.todo}</p>
                                     <button className="destroy" data-key={i} onClick={this.handleDel.bind(this)}>-</button>
                                 </li>
                             )
