@@ -2,6 +2,9 @@ import React, {Component} from 'react';
 class ListDoneMemos extends Component {
     constructor(props) {
         super(props);
+        this.state={
+            show:true
+        }
     }
     handleDel(e) {
         let delindex = e.target.getAttribute("data-key");
@@ -10,6 +13,11 @@ class ListDoneMemos extends Component {
     handleToDoing(e){
         let changeIndex=e.target.getAttribute("data-key");
         this.props.onDoneToDoing(changeIndex);
+    }
+    handleClick(e) {
+        this.setState({
+            show:!this.state.show
+        })
     }
     render() {
         let number=0;
@@ -20,7 +28,7 @@ class ListDoneMemos extends Component {
         })
         return (
             <main>
-                <h2>
+                <h2 onClick={this.handleClick.bind(this)}>
                     <span>
                         已完成
                     </span>
@@ -28,7 +36,7 @@ class ListDoneMemos extends Component {
                         {number}
                     </span>
                 </h2>
-                <ul>
+                <ul style={{display:this.state.show?"block":'none'}}>
                     {
                         this.props.todolist.map((item, i) => {
                         if(item.done){

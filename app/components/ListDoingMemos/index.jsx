@@ -2,6 +2,9 @@ import React, {Component} from 'react';
 class ListDoingMemos extends Component {
     constructor(props) {
         super(props);
+        this.state={
+            show:true
+        }
     }
     handleDel(e) {
         let delindex = e.target.getAttribute("data-key");
@@ -15,6 +18,11 @@ class ListDoingMemos extends Component {
         let changeIndex=e.target.getAttribute("data-key");
         this.props.onDoingToDone(changeIndex);
     }
+    handleClick(e) {
+        this.setState({
+            show:!this.state.show
+        })
+    }
     render() {
         let number=0;
         this.props.todolist.map((item)=>{
@@ -24,7 +32,7 @@ class ListDoingMemos extends Component {
         })
         return (
             <main>
-                <h2>
+                <h2 onClick={this.handleClick.bind(this)}>
                     <span>
                         正在进行
                     </span>
@@ -32,7 +40,7 @@ class ListDoingMemos extends Component {
                         {number}
                     </span>
                 </h2>
-                <ul>
+                <ul  style={{display:this.state.show?"block":'none'}}>
                     {
                         this.props.todolist.map((item, i) => {
                         if(item.doing){
