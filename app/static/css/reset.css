@@ -1,0 +1,46 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    overflow-x: hidden;
+    line-height: 1.5;
+}
+
+input, button {
+    outline: none;
+}
+
+textarea {
+    outline: none;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+hr {
+    height: 2px;
+    background: #000;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.clearfix:after {
+    content: "";
+    display: block;
+    height: 0;
+    visibility: hidden;
+    clear: both;
+}
