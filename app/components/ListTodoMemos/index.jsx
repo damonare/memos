@@ -1,5 +1,8 @@
 import React, {Component,PropTypes} from 'react';
 import {findDOMNode} from 'react-dom';
+/*
+ * @class ListTodoMemos `新建事项`组件
+ */
 class ListTodoMemos extends Component {
     constructor(props) {
         super(props);
@@ -10,14 +13,23 @@ class ListTodoMemos extends Component {
             show:true
         }
     }
+    /*
+     * @method  handleDel 删除事项
+     */
     handleDel(e) {
         let delindex = e.target.getAttribute("data-key");
         this.props.onDel(delindex);
     }
-    handleChange(e) {
+    /*
+     * @method  handleToDoing 改变状态todog->doing
+     */
+    handleToDoing(e) {
         let changeIndex = e.target.getAttribute("data-key");
         this.props.onTodoToDoing(changeIndex);
     }
+    /*
+     * @method  handleClick 事项内容 展开or隐藏
+     */
     handleClick(e) {
         this.setState({
             show:!this.state.show
@@ -49,7 +61,7 @@ class ListTodoMemos extends Component {
                                         ? "0.7"
                                         : ''
                                 }}>
-                                    <input type="checkbox" checked={!item.istodo} onChange={this.handleChange.bind(this)} data-key={i}/>
+                                    <input type="checkbox" checked={!item.istodo} onChange={this.handleToDoing.bind(this)} data-key={i}/>
                                     <p>{item.todo}</p>
                                     <button className="destroy" data-key={i} onClick={this.handleDel.bind(this)}>×</button>
                                 </li>

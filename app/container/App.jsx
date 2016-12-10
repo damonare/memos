@@ -5,8 +5,8 @@ import Navigation from '../components/Navigation';
 import {addTodo, search} from '../actions';
 import './App.less';
 /*
-    *  APP组件
-    */
+ * @class App `APP`组件
+ */
 class App extends Component {
     constructor(props) {
         super(props);

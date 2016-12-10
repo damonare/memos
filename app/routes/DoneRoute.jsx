@@ -6,9 +6,9 @@ import {
     deleteTodo,
     changeDoneToDoing,
 } from '../actions';
-    /*
-    *  路由组件
-    */
+/*
+ * @class DoneRoute `已完成`组件
+ */
 class DoneRoute extends Component {
     constructor(props) {
         super(props);

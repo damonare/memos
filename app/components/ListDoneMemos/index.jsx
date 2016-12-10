@@ -1,4 +1,7 @@
 import React, {Component,PropTypes} from 'react';
+/*
+ * @class ListDoneMemos `已完成`组件
+ */
 class ListDoneMemos extends Component {
     constructor(props) {
         super(props);
@@ -9,14 +12,23 @@ class ListDoneMemos extends Component {
             show:true
         }
     }
+    /*
+     * @method  handleDel 删除事项
+     */
     handleDel(e) {
         let delindex = e.target.getAttribute("data-key");
         this.props.onDel(delindex);
     }
+    /*
+     * @method  handleToDoing 改变状态done->doing
+     */
     handleToDoing(e){
         let changeIndex=e.target.getAttribute("data-key");
         this.props.onDoneToDoing(changeIndex);
     }
+    /*
+     * @method  handleClick 事项内容 展开or隐藏
+     */
     handleClick(e) {
         this.setState({
             show:!this.state.show

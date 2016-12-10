@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import { IndexLink  } from 'react-router';
 import NavLink from './navLink';
+/*
+ * @class Navigation `导航`组件
+ */
 export default class Navigation extends Component {
     constructor() {
         super();

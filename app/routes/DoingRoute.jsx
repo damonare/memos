@@ -7,9 +7,9 @@ import {
     changeDoingToDone,
     changeDoingToTodo,
 } from '../actions';
-    /*
-    *  路由组件
-    */
+/*
+ * @class DoingRoute `正在进行`组件
+ */
 class DoingRoute extends Component {
     constructor(props) {
         super(props);

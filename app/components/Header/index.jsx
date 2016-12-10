@@ -1,5 +1,8 @@
 import React, {Component,PropTypes} from 'react';
 import { findDOMNode } from 'react-dom';
+/*
+ * @class Header `头`组件
+ */
 class Header extends Component {
     constructor(props) {
         super(props);
@@ -11,11 +14,17 @@ class Header extends Component {
             hint:'',
         }
     }
+    /*
+     * @method  handleKeyUp 响应键盘事件
+     */
     handleKeyUp(e) {
         if (e.keyCode != "13") {
             this.setState({hidden: true})
         }
     }
+    /*
+     * @method  handleSearch 搜索
+     */
     handleSearch(e){
         e.preventDefault();
         const inputNode = findDOMNode(this.refs.inputnew);
@@ -23,6 +32,9 @@ class Header extends Component {
         this.props.onSearch(text);
         inputNode.value = '';
     }
+    /*
+     * @method  handleClick 添加新事项并对输入字符做出判断
+     */
     handleClick(e) {
         e.preventDefault();
         const inputNode = findDOMNode(this.refs.inputnew);

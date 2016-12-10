@@ -6,9 +6,9 @@ import {
     deleteTodo,
     changeTodoToDoing,
 } from '../actions';
-    /*
-    *  路由组件
-    */
+/*
+ * @class TodoRoute `新建事项`组件
+ */
 class TodoRoute extends Component {
     constructor(props) {
         super(props);

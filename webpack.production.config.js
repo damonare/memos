@@ -2,6 +2,9 @@ var webpack = require('webpack');
 var path = require('path');
 var uglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 var CopyWebpackPlugin = require('copy-webpack-plugin');
+/*
+* 生产环境配置（此处保留之前对SCSS文件模块的处理）
+*/
 
 module.exports = {
     devtool: false,

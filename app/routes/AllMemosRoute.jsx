@@ -10,9 +10,9 @@ import {
     changeDoingToTodo,
     changeDoneToDoing,
 } from '../actions';
-    /*
-    *  APP组件
-    */
+/*
+ * @class AllMemosRoute `全部事项`组件
+ */
 class AllMemosRoute extends Component {
     constructor(props) {
         super(props);
