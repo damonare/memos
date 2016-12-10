@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { IndexLink  } from 'react-router';
 import NavLink from './navLink';
 export default class Navigation extends Component {
     constructor() {
@@ -10,7 +11,6 @@ export default class Navigation extends Component {
                 <ol>
                     <li>
                         <NavLink to="/memos">全部<span>{this.props.allMemos}</span></NavLink>
-
                     </li>
                     <li>
                         <NavLink to="/memos/todo">新建事项<span>{this.props.todoNumber}</span></NavLink>
