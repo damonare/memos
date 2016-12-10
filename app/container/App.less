@@ -1,9 +1,22 @@
-@bg-gray: #CDCDCD;
-
+/*
+* CSS reset
+*/
+@import '../static/css/reset.css';
+/*
+* 全局字号颜色定义
+*/
+@import "base.less";
+/*
+* 提示的三角符号CSS代码
+*/
+.border(@radius, @color) {
+    border-left: @radius solid transparent;
+    border-right: @radius solid transparent;
+    border-bottom: @radius*2 solid @color;
+}
 body {
     background: @bg-gray;
 }
-
 header {
     height: 50px;
     background: rgba(47,47,47,0.98);
@@ -24,10 +37,9 @@ header {
         label {
             width: 100px;
             line-height: 50px;
-            color: #DDD;
-            font-size: 24px;
+            color: @label-grey;
+            font-size: @font-size-lgest;
             cursor: pointer;
-            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
         }
 
         input {
@@ -43,20 +55,14 @@ header {
 
         div {
             button {
-                border: 1px solid #fff;
+                border: 1px solid @white;
                 padding: 5px 7px;
                 border-radius: 5px;
-                background: #fff;
+                background: @white;
                 margin-left: 10px;
             }
         }
     }
-}
-
-.border(@radius, @color) {
-    border-left: @radius solid transparent;
-    border-right: @radius solid transparent;
-    border-bottom: @radius*2 solid @color;
 }
 
 .hint {
@@ -69,11 +75,11 @@ header {
     div:last-child {
         padding: 7px 5px;
         border-radius: 5px;
-        border: 2px solid #A9A9A9;
+        border: 2px solid @border-grey;
         box-shadow: 5px;
-        background: #fff;
+        background: @white;
         text-align: center;
-        font-size: 15px;
+        font-size: @font-size-lg;
     }
 
     .test {
@@ -84,13 +90,12 @@ header {
         span {
             width: 0;
             height: 0;
-            font-size: 0;
             overflow: hidden;
             position: absolute;
         }
 
         span.bot {
-            .border(8px,#A9A9A9);
+            .border(8px,@border-grey);
             width: 0;
             height: 0;
             left: 12px;
@@ -98,7 +103,7 @@ header {
         }
 
         span.top {
-            .border(6px,#fff);
+            .border(6px,@white);
             width: 0;
             height: 0;
             left: 14px;
@@ -108,16 +113,16 @@ header {
 }
 
 main {
-    padding: 15px;
+    padding: 10px;
     box-sizing: border-box;
 
     h2 {
         width: 100%;
-        max-width: 600px;
+        max-width: 800px;
         margin: 0 auto;
 
         span:first-child {
-            font-size: 1.5em;
+            font-size: @font-size-lger;
         }
 
         span:last-child {
@@ -128,24 +133,23 @@ main {
             text-align: center;
             line-height: 20px;
             border-radius: 50%;
-            margin-top: 10px;
-            color: #666;
-            background: #E6E6FA;
+            margin-top: 5px;
+            background: @c-secondary;
         }
     }
 
     li {
         height: 32px;
         width: 100%;
-        max-width: 600px;
+        max-width: 800px;
         margin: 0 auto;
         line-height: 32px;
-        background: #fff;
+        background: @white;
         position: relative;
         margin-bottom: 10px;
         padding: 0 45px;
         border-radius: 3px;
-        border-left: 5px solid #629A9C;
+        border-left: 5px solid @border-color;
         box-shadow: 0 1px 2px rgba(0,0,0,0.07);
         list-style: none;
 
@@ -161,7 +165,7 @@ main {
 
         p {
             margin: 0;
-            font-size: 16px;
+            font-size: @font-size-sm;
             cursor: pointer;
         }
 
@@ -173,12 +177,12 @@ main {
             width: 30px;
             height: 24px;
             border-radius: 15px;
-            border: 6px double #FFF;
-            background: #CCC;
+            border: 6px double @white;
+            background: @button-grey;
             line-height: 4px;
             text-align: center;
-            color: #FFF;
-            font-size: 24px;
+            color: @white;
+            font-size: @font-size-lgest;
             cursor: pointer;
         }
     }

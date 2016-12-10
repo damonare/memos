@@ -2,6 +2,9 @@ import React, {Component,PropTypes} from 'react';
 class ListDoingMemos extends Component {
     constructor(props) {
         super(props);
+        /*
+        *  show属性控制本页面事项的上展开隐藏功能
+        */
         this.state={
             show:true
         }

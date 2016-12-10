@@ -5,7 +5,6 @@ import Header from '../components/Header';
 import ListDoingMemos from '../components/ListDoingMemos';
 import ListDoneMemos from '../components/ListDoneMemos';
 import './App.less';
-import '../static/css/reset.css';
 import {
     addTodo,
     deleteTodo,
@@ -14,6 +13,9 @@ import {
     changeDoingToTodo,
     changeDoneToDoing,
     search} from '../actions';
+    /*
+    *  APP组件
+    */
 class App extends Component {
     constructor(props) {
         super(props);

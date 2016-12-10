@@ -7,7 +7,7 @@ module.exports = {
     devtool: false,
     entry: [
         path.resolve(__dirname, './app/main.jsx')
-    ], 
+    ],
     output: {
         path: __dirname + '/build',
         publicPath: '/',
@@ -22,6 +22,10 @@ module.exports = {
             test: /\.scss$/,
             include: path.resolve(__dirname, 'app'),
             loader: 'style-loader!css-loader!autoprefixer-loader!sass-loader'
+        },{
+            test: /\.less$/,
+            include: path.resolve(__dirname, 'app'),
+            loader: 'style-loader!css-loader!autoprefixer-loader!less-loader'
         }, {
             test: /\.css$/,
             include: path.resolve(__dirname, 'app'),

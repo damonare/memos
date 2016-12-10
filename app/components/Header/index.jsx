@@ -3,8 +3,12 @@ import { findDOMNode } from 'react-dom';
 class Header extends Component {
     constructor(props) {
         super(props);
+        /*
+        *  hidden,hint属性判断用户输入空字符
+        */
         this.state = {
-            hidden: true
+            hidden: true,
+            hint:'',
         }
     }
     handleKeyUp(e) {
@@ -23,10 +27,14 @@ class Header extends Component {
         e.preventDefault();
         const inputNode = findDOMNode(this.refs.inputnew);
         const text = inputNode.value.trim();
-        if (text != '') {
+        if (text.length>20) {
+            this.setState({hidden: false})
+            this.setState({hint: '请输入20字以内'})
+        }else if(text != ""){
             this.props.onAdd(text);
             this.setState({hidden: true})
-        } else {
+        }else{
+            this.setState({hint: '请输入内容'})
             this.setState({hidden: false})
         }
         inputNode.value = '';
@@ -52,7 +60,7 @@ class Header extends Component {
                         <span className="top"></span>
                     </div>
                     <div>
-                        请填写此字段
+                        {this.state.hint}
                     </div>
                 </div>
             </header>

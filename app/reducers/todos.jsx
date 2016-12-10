@@ -134,12 +134,10 @@ function todolist(state = todos, action) {
         case Delete_Todo:
             localStorage.setItem('todos', JSON.stringify([
                 ...state.slice(0, action.index),
-                state.splice(action.index, 1),
                 ...state.slice(parseInt(action.index) + 1)
             ]));
             return [
                 ...state.slice(0, action.index),
-                state.splice(action.index, 1),
                 ...state.slice(parseInt(action.index) + 1)
             ];
             /*
@@ -148,8 +146,6 @@ function todolist(state = todos, action) {
         case Search:
         let text=action.text;
         let reg=eval("/"+text+"/gi");
-        console.log(text.split(""));
-        console.log(state.filter(item=> item.todo.match(reg)))
             return state.filter(item=> item.todo.match(reg));
         default:
             return state;
