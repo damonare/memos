@@ -1,6 +1,6 @@
 ## Memos
 
-> 技术架构：本备忘录使用react+redux+less实现;
+> 技术架构：本备忘录使用react+react-router+redux+less实现;
 
 >页面UI参照：[TodoList官网](http://www.todolist.cn/)实现;
 
@@ -37,4 +37,6 @@
 npm install
 # 本地运行
 npm run start
+# 运行地址
+localhost:8080
 ```
