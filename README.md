@@ -1,6 +1,11 @@
 ## Memos
 
-> 技术架构：本备忘录使用react+redux+less实现，页面UI参照：[TodoList官网](http://www.todolist.cn/)实现。
+> 技术架构：本备忘录使用react+redux+less实现;
+
+>页面UI参照：[TodoList官网](http://www.todolist.cn/)实现;
+
+> 在线演示地址：[Damonare的备忘录](http://damonare.cn/memos);
+
 
 
 ### 功能说明
@@ -23,3 +28,12 @@
 - 搜索存在bug,搜索结果出现后进行操作会清空本地数据(逻辑已明白，未想到好的解决方案)
 - 添加`路由`，按事项状态分子页面展示
 - `全部事项`添加的位置
+
+### 本地演示方法
+
+```
+# 安装依赖
+npm install
+# 本地运行
+npm run start
+```
