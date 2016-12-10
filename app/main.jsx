@@ -14,11 +14,11 @@ const store = configureStore();
 ReactDOM.render(
     <Provider store={store}>
         <Router history={browserHistory}>
-            <Route path="/memos"  component={App}>
+            <Route path="/"  component={App}>
                 <IndexRoute component={AllMemosRoute}/>
-                <Route path="/memos/todo" component={TodoRoute}/>
-                <Route path="/memos/doing" component={DoingRoute}/>
-                <Route path="/memos/done" component={DoneRoute}/>
+                <Route path="/todo" component={TodoRoute}/>
+                <Route path="/doing" component={DoingRoute}/>
+                <Route path="/done" component={DoneRoute}/>
             </Route>
         </Router>
    </Provider>,
