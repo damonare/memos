@@ -1,4 +1,4 @@
-@color: #4D926F;
+@color:  #629A9C;
 .main {
     font-size: 16px;
     text-align: center;
@@ -6,5 +6,12 @@
 
 .active {
     color: @color;
-    font-size:20px;
+    font-size:16px;
+}
+.active:after{
+    content:'';
+    display: block;
+    width:calc(100%-30px);;
+    height:2px;
+    background:@color;
 }

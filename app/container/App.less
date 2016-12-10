@@ -111,7 +111,26 @@ header {
         }
     }
 }
-
+ol{
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline;
+    li{
+        display: inline-block;
+        font-size: @font-size-base;
+        span{
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            line-height: 20px;
+            border-radius: 50%;
+            margin-top: 5px;
+            margin-left: 5px;
+            background:@c-secondary;
+        }
+    }
+}
 main {
     padding: 10px;
     box-sizing: border-box;
