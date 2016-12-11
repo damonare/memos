@@ -25,6 +25,8 @@ class ListTodoMemos extends Component {
      */
     handleToDoing(e) {
         let changeIndex = e.target.getAttribute("data-key");
+        console.log(e.target);
+        console.log(changeIndex);
         this.props.onTodoToDoing(changeIndex);
     }
     /*
@@ -57,9 +59,7 @@ class ListTodoMemos extends Component {
                         if (item.istodo) {
                             return (
                                 <li key={i} style={{
-                                    opacity: item.istodo
-                                        ? "0.7"
-                                        : ''
+                                    opacity: item.istodo? "0.7": ''
                                 }}>
                                     <input type="checkbox" checked={!item.istodo} onChange={this.handleToDoing.bind(this)} data-key={i}/>
                                     <p>{item.todo}</p>

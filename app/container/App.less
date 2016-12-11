@@ -26,16 +26,16 @@ header {
         max-width: 800px;
         padding: 0 10px;
         margin: 0 auto;
-        line-height: 50px;
+        line-height: 1;
     }
 
     form {
         display: flexbox;
         display: flex;
         justify-content: space-around;
-
+        align-items: center;
         label {
-            width: 100px;
+            width: 75px;
             line-height: 50px;
             color: @label-grey;
             font-size: @font-size-lgest;
@@ -43,9 +43,8 @@ header {
         }
 
         input {
-            width: 40%;
+            width: 35%;
             height: 24px;
-            margin-top: 12px;
             line-height: 24px;
             text-indent: 10px;
             border-radius: 5px;
@@ -54,6 +53,7 @@ header {
         }
 
         div {
+            display: inline-block;
             button {
                 border: 1px solid @white;
                 padding: 5px 7px;
@@ -141,7 +141,7 @@ main {
         width: 100%;
         max-width: 800px;
         margin: 0 auto;
-
+        cursor: pointer;
         span:first-child {
             font-size: @font-size-lger;
         }

@@ -46,20 +46,22 @@ function todolist(state = todos, action) {
         case Change_Todo_To_Doing:
             localStorage.setItem('todos', JSON.stringify([
                 ...state.slice(0, action.index),
-                Object.assign({}, state[action.index], {
+                {
+                    todo:state[action.index].todo,
                     istodo: false,
                     doing: true,
                     done: false
-                }),
+                },
                 ...state.slice(parseInt(action.index) + 1)
             ]));
             return [
                 ...state.slice(0, action.index),
-                Object.assign({}, state[action.index], {
+                {
+                    todo:state[action.index].todo,
                     istodo: false,
                     doing: true,
                     done: false
-                }),
+                },
                 ...state.slice(parseInt(action.index) + 1)
             ];
             /*
@@ -68,20 +70,22 @@ function todolist(state = todos, action) {
         case Change_Doing_To_Done:
             localStorage.setItem('todos', JSON.stringify([
                 ...state.slice(0, action.index),
-                Object.assign({}, state[action.index], {
+                {
+                    todo:state[action.index].todo,
                     istodo: false,
                     doing: false,
                     done: true
-                }),
+                },
                 ...state.slice(parseInt(action.index) + 1)
             ]));
             return [
                 ...state.slice(0, action.index),
-                Object.assign({}, state[action.index], {
+                {
+                    todo:state[action.index].todo,
                     istodo: false,
                     doing: false,
                     done: true
-                }),
+                },
                 ...state.slice(parseInt(action.index) + 1)
             ];
             /*
@@ -90,20 +94,22 @@ function todolist(state = todos, action) {
         case Change_Done_To_Doing:
             localStorage.setItem('todos', JSON.stringify([
                 ...state.slice(0, action.index),
-                Object.assign({}, state[action.index], {
+                {
+                    todo:state[action.index].todo,
                     istodo: false,
                     doing: true,
                     done: false
-                }),
+                },
                 ...state.slice(parseInt(action.index) + 1)
             ]));
             return [
                 ...state.slice(0, action.index),
-                Object.assign({}, state[action.index], {
+                {
+                    todo:state[action.index].todo,
                     istodo: false,
                     doing: true,
                     done: false
-                }),
+                },
                 ...state.slice(parseInt(action.index) + 1)
             ];
             /*
@@ -112,20 +118,22 @@ function todolist(state = todos, action) {
         case Change_Doing_To_Todo:
             localStorage.setItem('todos', JSON.stringify([
                 ...state.slice(0, action.index),
-                Object.assign({}, state[action.index], {
+                {
+                    todo:state[action.index].todo,
                     istodo: true,
                     doing: false,
                     done: false
-                }),
+                },
                 ...state.slice(parseInt(action.index) + 1)
             ]));
             return [
                 ...state.slice(0, action.index),
-                Object.assign({}, state[action.index], {
+                {
+                    todo:state[action.index].todo,
                     istodo: true,
                     doing: false,
                     done: false
-                }),
+                },
                 ...state.slice(parseInt(action.index) + 1)
             ];
             /*
