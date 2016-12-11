@@ -19,7 +19,7 @@ body {
 }
 header {
     height: 50px;
-    background: rgba(47,47,47,0.98);
+    background: @black;
 
     section {
         width: 100%;
@@ -37,15 +37,14 @@ header {
         label {
             width: 75px;
             line-height: 50px;
-            color: @label-grey;
+            color: @white;
             font-size: @font-size-lgest;
             cursor: pointer;
         }
 
         input {
-            width: 35%;
+            width: 40%;
             height: 24px;
-            line-height: 24px;
             text-indent: 10px;
             border-radius: 5px;
             box-shadow: 0 1px 0 rgba(255,255,255,0.24), 0 1px 6px rgba(0,0,0,0.45) inset;
@@ -117,9 +116,12 @@ ol{
     align-items: baseline;
     max-width: 800px;
     margin:0 auto;
+    background: @white;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
     li{
         display: inline-block;
-        font-size: @font-size-base;
+        font-size: @font-size-lg;
         span{
             display: inline-block;
             width: 20px;
