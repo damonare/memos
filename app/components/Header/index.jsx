@@ -57,7 +57,7 @@ class Header extends Component {
                 <section>
                     <form onSubmit={e => this.handleClick(e)}>
                         <label htmlFor="new-todo">备忘录</label>
-                        <input onKeyUp={this.handleKeyUp.bind(this)}  ref="inputnew" type="text" placeholder="新建备忘录" defaultValue={this.props.text} id="new-todo"/>
+                        <input onKeyUp={this.handleKeyUp.bind(this)}  ref="inputnew" type="text" placeholder="新建事项(20字以内)" defaultValue={this.props.text} id="new-todo"/>
                         <div>
                             <button onClick={e => this.handleClick(e)}>添加</button>
                             <button onClick={e => this.handleSearch(e)}>搜索</button>
