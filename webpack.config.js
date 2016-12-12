@@ -1,7 +1,7 @@
 var webpack = require('webpack');
 var path = require('path');
 var OpenBrowserPlugin = require('open-browser-webpack-plugin');
-var autoprefixer = require('autoprefixer');
+var autoprefixer = require('autoprefixer-loader');
 /*
 * 测试环境配置（此处保留之前对SCSS文件模块的处理）
 * 使用autoprefixer自动添加CSS前缀
