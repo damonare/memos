@@ -26,7 +26,7 @@
 
 ### 待解决
 
-- 搜索存在bug,搜索结果出现后进行操作会清空本地数据(逻辑已明白，未想到好的解决方案)
+- 搜索存在bug,搜索结果出现后进行操作会清空本地数据
 - 添加`路由`，按事项状态分子页面展示;Done
 - `全部事项`添加的位置;Done
 
@@ -40,3 +40,13 @@ npm run start
 # 运行地址
 localhost:8080
 ```
+
+### 相关截图
+
+**PC端页面:**
+
+![PC端页面](http://7xsssj.com2.z0.glb.qiniucdn.com/PC%E7%AB%AF%E5%A4%87%E5%BF%98%E5%BD%95%E9%A1%B5%E9%9D%A2.png)
+
+**移动端页面:**
+
+![移动端端页面](http://7xsssj.com2.z0.glb.qiniucdn.com/%E6%89%8B%E6%9C%BA%E7%AB%AF%E5%A4%87%E5%BF%98%E5%BD%95%E9%A1%B5%E9%9D%A2.png)
