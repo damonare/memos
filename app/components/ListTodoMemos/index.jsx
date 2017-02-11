@@ -1,6 +1,6 @@
 import React, {Component,PropTypes} from 'react';
 import {findDOMNode} from 'react-dom';
-import { Collapse,Row,Col,Icon } from 'antd';
+import { Collapse,Row,Col,Icon,Button } from 'antd';
 /*
  * @class ListTodoMemos `新建事项`组件
  */
@@ -42,11 +42,15 @@ class ListTodoMemos extends Component {
                 <Collapse style={collapseStyle}>
                     <Panel header={
                         <Row>
-                            <Col span={23}>
+                            <Col span={22}>
                                 <h3>新建事项</h3>
                             </Col>
-                            <Col span={1}>
-                                {number}
+                            <Col span={2}>
+                                <Button
+                                    size="small"
+                                    shape="circle">
+                                    {number}
+                                </Button>
                             </Col>
                         </Row>
                     }>
@@ -58,10 +62,10 @@ class ListTodoMemos extends Component {
                                         opacity: item.istodo? "0.7": ''
                                     }}>
                                         <Row>
-                                            <Col span={1}>
+                                            <Col span={3}>
                                                 <input type="checkbox" checked={!item.istodo} onChange={this.handleToDoing.bind(this)} data-key={i}/>
                                             </Col>
-                                            <Col span={22}>
+                                            <Col span={20}>
                                                 <p>{item.todo}</p>
                                             </Col>
                                             <Col span={1}>

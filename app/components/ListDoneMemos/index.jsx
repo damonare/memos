@@ -1,5 +1,5 @@
 import React, {Component,PropTypes} from 'react';
-import { Collapse,Row,Col,Icon } from 'antd';
+import { Collapse,Row,Col,Icon,Button} from 'antd';
 /*
  * @class ListDoneMemos `已完成`组件
  */
@@ -36,7 +36,7 @@ class ListDoneMemos extends Component {
             maxWidth: "800px",
             margin:"0 auto",
         };
-        const panelContent=<Row><Col span={23}><h3>已完成</h3></Col><Col span={1}>{number}</Col></Row>;
+        const panelContent=<Row><Col span={22}><h3>已完成</h3></Col><Col span={2}><Button size="small" shape="circle">{number}</Button></Col></Row>;
         const Panel = Collapse.Panel;
         return (
             <main>
@@ -53,10 +53,10 @@ class ListDoneMemos extends Component {
 
                                             opacity:"0.4"}}>
                                         <Row>
-                                            <Col span={1}>
+                                            <Col span={3}>
                                                 <input type="checkbox" checked={item.done} disabled/>
                                             </Col>
-                                            <Col span={22}>
+                                            <Col span={20}>
                                                 <p
                                                     data-key={i} onClick={this.handleToDoing.bind(this)}
                                                     style={{textDecoration:"line-through"}}
