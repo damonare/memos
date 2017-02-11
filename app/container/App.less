@@ -1,3 +1,4 @@
+@import '~antd/dist/antd.css';
 /*
 * CSS reset
 */
@@ -24,9 +25,9 @@ header {
     section {
         width: 100%;
         max-width: 800px;
-        padding: 0 10px;
+        padding: 0 3px;
         margin: 0 auto;
-        line-height: 1;
+        line-height: 50px;
     }
 
     form {
@@ -35,21 +36,25 @@ header {
         justify-content: space-around;
         align-items: center;
         label {
-            width: 75px;
             line-height: 50px;
             color: @white;
-            font-size: @font-size-lgest;
+            font-size: @font-size-lger;
             cursor: pointer;
         }
+        @media screen and (min-width: 768px){
+            label{
+                font-size: @font-size-lgest;
+            }
 
-        input {
-            width: 40%;
-            height: 24px;
-            text-indent: 10px;
-            border-radius: 5px;
-            box-shadow: 0 1px 0 rgba(255,255,255,0.24), 0 1px 6px rgba(0,0,0,0.45) inset;
-            border: none;
         }
+        // input {
+        //     width: 40%;
+        //     height: 24px;
+        //     text-indent: 10px;
+        //     border-radius: 5px;
+        //     box-shadow: 0 1px 0 rgba(255,255,255,0.24), 0 1px 6px rgba(0,0,0,0.45) inset;
+        //     border: none;
+        // }
 
         div {
             display: inline-block;
@@ -110,56 +115,42 @@ header {
         }
     }
 }
-ol{
-    display: flex;
-    justify-content: space-around;
-    align-items: baseline;
-    max-width: 800px;
-    margin:0 auto;
+.className{
     background: @white;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
-    li{
-        display: inline-block;
-        font-size: @font-size-lg;
-        span{
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            text-align: center;
-            line-height: 20px;
-            border-radius: 50%;
-            margin-top: 5px;
-            margin-left: 5px;
-            background:@c-secondary;
-        }
-    }
+    text-align: center;
+    max-width:800px;
+    margin:0 auto;
 }
+// ol{
+//     display: flex;
+//     justify-content: space-around;
+//     align-items: baseline;
+//     max-width: 800px;
+//     margin:0 auto;
+//     background: @white;
+//     border-bottom-left-radius: 5px;
+//     border-bottom-right-radius: 5px;
+//     li{
+//         display: inline-block;
+//         font-size: @font-size-lg;
+//         span{
+//             display: inline-block;
+//             width: 20px;
+//             height: 20px;
+//             text-align: center;
+//             line-height: 20px;
+//             border-radius: 50%;
+//             margin-top: 5px;
+//             margin-left: 5px;
+//             background:@c-secondary;
+//         }
+//     }
+// }
 main {
     padding: 10px;
     box-sizing: border-box;
-
-    h2 {
-        width: 100%;
-        max-width: 800px;
-        margin: 0 auto;
-        cursor: pointer;
-        span:first-child {
-            font-size: @font-size-lger;
-        }
-
-        span:last-child {
-            float: right;
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            text-align: center;
-            line-height: 20px;
-            border-radius: 50%;
-            margin-top: 5px;
-            background: @c-secondary;
-        }
-    }
 
     li {
         height: 32px;
@@ -170,7 +161,6 @@ main {
         background: @white;
         position: relative;
         margin-bottom: 10px;
-        padding: 0 45px;
         border-radius: 3px;
         border-left: 5px solid @border-color;
         box-shadow: 0 1px 2px rgba(0,0,0,0.07);

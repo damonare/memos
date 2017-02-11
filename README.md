@@ -1,12 +1,10 @@
 ## Memos
 
-> 技术架构：本备忘录使用react+react-router+redux+less实现;
+> 技术架构：本备忘录使用react+react-router+redux+less+ES6+webpack实现;
 
 >页面UI参照：[TodoList官网](http://www.todolist.cn/)实现;
 
 > 在线演示地址：[Damonare的备忘录](http://damonare.cn/memos);
-
-
 
 ### 功能说明
 

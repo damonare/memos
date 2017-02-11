@@ -1,16 +1,11 @@
 import React, {Component,PropTypes} from 'react';
+import { Collapse,Row,Col ,Icon} from 'antd';
 /*
  * @class ListDoingMemos `正在进行`组件
  */
 class ListDoingMemos extends Component {
     constructor(props) {
         super(props);
-        /*
-        *  show属性控制本页面事项的上展开隐藏功能
-        */
-        this.state={
-            show:true
-        }
     }
     /*
      * @method  handleDel 删除事项
@@ -33,46 +28,61 @@ class ListDoingMemos extends Component {
         let changeIndex=e.target.getAttribute("data-key");
         this.props.onDoingToDone(changeIndex);
     }
-    /*
-     * @method  handleClick 事项内容 展开or隐藏
-     */
-    handleClick(e) {
-        this.setState({
-            show:!this.state.show
-        })
-    }
     render() {
         let number=0;
         this.props.todolist.map((item)=>{
             if(item.doing){
                 number++;
             }
-        })
+        });
+        const collapseStyle={
+            width: "100%",
+            maxWidth: "800px",
+            margin:"0 auto",
+        }
+        const Panel = Collapse.Panel;
         return (
             <main>
-                <h2 onClick={this.handleClick.bind(this)}>
-                    <span>
-                        正在进行
-                    </span>
-                    <span>
-                        {number}
-                    </span>
-                </h2>
-                <ul  style={{display:this.state.show?"block":'none'}}>
-                    {
-                        this.props.todolist.map((item, i) => {
-                        if(item.doing){
-                            return (
-                                <li key={i} style={{opacity:item.doing?"1":''}}>
-                                    <input type="checkbox" checked={item.doing} onChange={this.handleToTodo.bind(this)} data-key={i}/>
-                                    <p data-key={i} onClick={this.handleToDone.bind(this)}>{item.todo}</p>
-                                    <button className="destroy" data-key={i} onClick={this.handleDel.bind(this)}>×</button>
-                                </li>
-                            )
-                        }
-                    })
-                    }
-                </ul>
+                <Collapse style={collapseStyle}>
+                    <Panel header={
+                        <Row>
+                            <Col span={23}>
+                                <h3>正在进行</h3>
+                            </Col>
+                            <Col span={1}>
+                                {number}
+                            </Col>
+                        </Row>
+                    }>
+                        <ul>
+                            {
+                                this.props.todolist.map((item, i) => {
+                                if(item.doing){
+                                    return (
+                                        <li key={i} style={{opacity:item.doing?"1":''}}>
+                                            <Row>
+                                                <Col span={1}>
+                                                    <input type="checkbox" checked={item.doing} onChange={this.handleToTodo.bind(this)} data-key={i}/>
+                                                </Col>
+                                                <Col span={22}>
+                                                    <p data-key={i} onClick={this.handleToDone.bind(this)}>{item.todo}</p>
+                                                </Col>
+                                                <Col span={1}>
+                                                    <Icon type="close-circle"  data-key={i}
+                                                    style={{fontSize:"20px"}}
+                                                    onClick={this.handleDel.bind(this)}/>
+                                                </Col>
+                                            </Row>                                
+                                        </li>
+                                    )
+                                }
+                            })
+                            }
+                        </ul>
+                    </Panel>
+                </Collapse>
+
+
             </main>
         )
     }

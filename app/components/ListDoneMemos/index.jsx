@@ -1,16 +1,11 @@
 import React, {Component,PropTypes} from 'react';
+import { Collapse,Row,Col,Icon } from 'antd';
 /*
  * @class ListDoneMemos `已完成`组件
  */
 class ListDoneMemos extends Component {
     constructor(props) {
         super(props);
-        /*
-        *  show属性控制本页面事项的上展开隐藏功能
-        */
-        this.state={
-            show:true
-        }
     }
     /*
      * @method  handleDel 删除事项
@@ -29,43 +24,58 @@ class ListDoneMemos extends Component {
     /*
      * @method  handleClick 事项内容 展开or隐藏
      */
-    handleClick(e) {
-        this.setState({
-            show:!this.state.show
-        })
-    }
     render() {
         let number=0;
         this.props.todolist.map((item)=>{
             if(item.done){
                 number++;
             }
-        })
+        });
+        const collapseStyle={
+            width: "100%",
+            maxWidth: "800px",
+            margin:"0 auto",
+        };
+        const panelContent=<Row><Col span={23}><h3>已完成</h3></Col><Col span={1}>{number}</Col></Row>;
+        const Panel = Collapse.Panel;
         return (
             <main>
-                <h2 onClick={this.handleClick.bind(this)}>
-                    <span>
-                        已完成
-                    </span>
-                    <span>
-                        {number}
-                    </span>
-                </h2>
-                <ul style={{display:this.state.show?"block":'none'}}>
-                    {
-                        this.props.todolist.map((item, i) => {
-                        if(item.done){
-                            return (
-                                <li key={i} style={{textDecoration:item.done?"line-through":"",opacity:item.done?"0.4":''}}>
-                                    <input type="checkbox" checked={item.done} disabled/>
-                                    <p data-key={i} onClick={this.handleToDoing.bind(this)}>{item.todo}</p>
-                                    <button className="destroy" data-key={i} onClick={this.handleDel.bind(this)}>×</button>
-                                </li>
-                            )
+                <Collapse style={collapseStyle}>
+                    <Panel header={panelContent}>
+                    <ul>
+                        {
+                            this.props.todolist.map((item, i) => {
+                            if(item.done){
+                                return (
+                                    <li
+                                        key={i}
+                                        style={{
+
+                                            opacity:"0.4"}}>
+                                        <Row>
+                                            <Col span={1}>
+                                                <input type="checkbox" checked={item.done} disabled/>
+                                            </Col>
+                                            <Col span={22}>
+                                                <p
+                                                    data-key={i} onClick={this.handleToDoing.bind(this)}
+                                                    style={{textDecoration:"line-through"}}
+                                                    >{item.todo}</p>
+                                            </Col>
+                                            <Col>
+                                                <Icon type="close-circle"  data-key={i}
+                                                style={{fontSize:"20px"}}
+                                                onClick={this.handleDel.bind(this)}/>
+                                            </Col>
+                                        </Row>
+                                    </li>
+                                )
+                            }
+                        })
                         }
-                    })
-                    }
-                </ul>
+                    </ul>
+                    </Panel>
+                </Collapse>
             </main>
         )
     }

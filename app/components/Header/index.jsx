@@ -1,5 +1,6 @@
-import React, {Component,PropTypes} from 'react';
-import { findDOMNode } from 'react-dom';
+import React, {Component, PropTypes} from 'react';
+import {findDOMNode} from 'react-dom';
+import {Button, Input} from 'antd';
 /*
  * @class Header `头`组件
  */
@@ -11,7 +12,7 @@ class Header extends Component {
         */
         this.state = {
             hidden: true,
-            hint:'',
+            hint: ''
         }
     }
     /*
@@ -25,7 +26,7 @@ class Header extends Component {
     /*
      * @method  handleSearch 搜索
      */
-    handleSearch(e){
+    handleSearch(e) {
         e.preventDefault();
         const inputNode = findDOMNode(this.refs.inputnew);
         const text = inputNode.value.trim();
@@ -39,13 +40,13 @@ class Header extends Component {
         e.preventDefault();
         const inputNode = findDOMNode(this.refs.inputnew);
         const text = inputNode.value.trim();
-        if (text.length>20) {
+        if (text.length > 20) {
             this.setState({hidden: false})
             this.setState({hint: '请输入20字以内'})
-        }else if(text != ""){
+        } else if (text != "") {
             this.props.onAdd(text);
             this.setState({hidden: true})
-        }else{
+        } else {
             this.setState({hint: '请输入内容'})
             this.setState({hidden: false})
         }
@@ -57,15 +58,19 @@ class Header extends Component {
                 <section>
                     <form onSubmit={e => this.handleClick(e)}>
                         <label htmlFor="new-todo">备忘录</label>
-                        <input onKeyUp={this.handleKeyUp.bind(this)}  ref="inputnew" type="text" placeholder="新建事项(20字以内)" defaultValue={this.props.text} id="new-todo"/>
+                        <Input onKeyUp={this.handleKeyUp.bind(this)} ref="inputnew" type="text" placeholder="新建事项(20字以内)" defaultValue={this.props.text} id="new-todo" style={{
+                            width: "40%"
+                        }}/>
                         <div>
-                            <button onClick={e => this.handleClick(e)}>添加</button>
-                            <button onClick={e => this.handleSearch(e)}>搜索</button>
+                            <Button type="default" ghost onClick={e => this.handleClick(e)}>添加</Button>
+                            <Button type="default" ghost icon="search" onClick={e => this.handleSearch(e)}>搜索</Button>
                         </div>
                     </form>
                 </section>
                 <div className='hint' style={{
-                    display: this.state.hidden?"none":"inline-block"
+                    display: this.state.hidden
+                        ? "none"
+                        : "inline-block"
                 }}>
                     <div className="test">
                         <span className="bot"></span>
@@ -79,8 +84,8 @@ class Header extends Component {
         )
     }
 }
-Header.propTypes={
+Header.propTypes = {
     onAdd: PropTypes.func.isRequired,
-    onSearch:PropTypes.func.isRequired
+    onSearch: PropTypes.func.isRequired
 }
 export default Header;
