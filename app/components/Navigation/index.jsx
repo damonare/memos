@@ -1,4 +1,4 @@
-import { React, Component } from 'react';
+import React, { Component } from 'react';
 import { IndexLink } from 'react-router';
 import NavLink from './navLink';
 import { Tabs, Button, Row, Col } from 'antd';

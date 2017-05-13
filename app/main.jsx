@@ -22,4 +22,4 @@ ReactDOM.render(
             </Route>
         </Router>
    </Provider>,
- document.body.appendChild(document.createElement('div')))
+ document.getElementById('root'))

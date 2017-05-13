@@ -1,4 +1,4 @@
-import { React, Component } from 'react';
+import React, { Component } from 'react';
 import { findDOMNode } from 'react-dom';
 import { Collapse, Row, Col, Icon, Button } from 'antd';
 import PropTypes from 'prop-types';

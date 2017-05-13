@@ -1,4 +1,4 @@
-import { React, Component } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ListTodoMemos from '../components/ListTodoMemos';
 import ListDoingMemos from '../components/ListDoingMemos';
