@@ -86,8 +86,6 @@ class ListDoingMemos extends Component {
                         </ul>
                     </Panel>
                 </Collapse>
-
-
             </main>
         )
     }

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Route, IndexRoute, browserHistory, Router } from 'react-router';
+import { Route, IndexRoute, hashHistory, Router } from 'react-router';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import App from './container/App';
@@ -13,7 +13,7 @@ import './main.less';
 const store = configureStore();
 ReactDOM.render(
     <Provider store={store}>
-        <Router history={browserHistory}>
+        <Router history={hashHistory}>
             <Route path="/"  component={App}>
                 <IndexRoute component={AllMemosRoute}/>
                 <Route path="/todo" component={TodoRoute}/>
@@ -22,4 +22,5 @@ ReactDOM.render(
             </Route>
         </Router>
    </Provider>,
- document.getElementById('root'))
+   document.getElementById('root')
+)

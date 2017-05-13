@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import Header from '../components/Header';
 import Navigation from '../components/Navigation';
 import { addTodo, search } from '../actions';
-import { DatePicker } from 'antd';
 import './App.less';
 // React.PropTypes is deprecated as of React v15.5
 import PropTypes from 'prop-types';

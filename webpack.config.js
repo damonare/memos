@@ -5,7 +5,6 @@
 *
 * 开发环境配置（此处保留之前对SCSS文件模块的处理）
 * 使用autoprefixer自动添加CSS前缀
-* 使用url-loader加载静态资源模块
 * 使用babel-loader进行ES6代码转义
 * 使用webpack-dev-server进行代码热替换
 * 运行端口：3000
@@ -19,7 +18,7 @@ module.exports = {
         vendor: ['react', 'react-dom', 'jquery', 'react-router', 'redux']
     },
     output: {
-        path: path.join(__dirname, '/app'),
+        path: path.join(__dirname, '/build'),
         filename: '[name].js'
     },
     resolve: {
