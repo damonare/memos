@@ -1,5 +1,6 @@
-import React, {Component,PropTypes} from 'react';
-import { Collapse,Row,Col ,Icon,Button} from 'antd';
+import { React, Component } from 'react';
+import { Collapse, Row, Col, Icon, Button } from 'antd';
+import PropTypes from 'prop-types';
 /*
  * @class ListDoingMemos `正在进行`组件
  */

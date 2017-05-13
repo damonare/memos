@@ -1,67 +1,51 @@
-var webpack = require('webpack');
-var path = require('path');
-var uglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
-var CopyWebpackPlugin = require('copy-webpack-plugin');
 /*
-* 生产环境配置（此处保留之前对SCSS文件模块的处理）
+* @file webpack配置文件(开发环境)
+* @author tanjizhen
+* @date 2017-04-30
 */
-
+const path = require('path');
+const webpack = require('webpack');
+const uglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
+const ChunkManifestPlugin = require("chunk-manifest-webpack-plugin");
+const WebpackChunkHash = require("webpack-chunk-hash");
 module.exports = {
-    devtool: false,
-    entry: [
-        path.resolve(__dirname, './app/main.jsx')
-    ],
-    output: {
-        path: __dirname + '/build',
-        publicPath: '/',
-        filename: './bundle.js'
+    entry: {
+        bundle: './app/main.jsx',
+        vendor: ['react', 'react-dom', 'jquery', 'react-router', 'redux', 'style-loader']
     },
-    module: {
-        loaders: [{
-            test: /\.(png|jpg)$/,
-            include: path.resolve(__dirname, 'app'),
-            loader: 'url-loader'
-        }, {
-            test: /\.scss$/,
-            include: path.resolve(__dirname, 'app'),
-            loader: 'style-loader!css-loader!autoprefixer-loader!sass-loader'
-        },{
-            test: /\.less$/,
-            include: path.resolve(__dirname, 'app'),
-            loader: 'style-loader!css-loader!autoprefixer-loader!less-loader'
-        }, {
-            test: /\.css$/,
-            include: path.resolve(__dirname, 'app'),
-            loader: 'style-loader!css-loader'
-        }, {
-            test: /\.js[x]?$/,
-            include: path.resolve(__dirname, 'app'),
-            exclude: /node_modules/,
-            loader: 'babel-loader'
-        }, ]
+    output: {
+        path: path.join(__dirname, '/build'),
+        filename: '[name].js',
+        chunkFilename: "[name].js"
     },
     resolve: {
-        extensions: ['', '.js', '.jsx'],
+        extensions: ['.js', '.jsx']
+    },
+    module: {
+        rules: [
+            {test: /\.(js|jsx)$/, use: 'babel-loader'},
+            {test: /\.less$/, use: ["style-loader", "css-loader", "less-loader",]},
+        ]
     },
     plugins: [
-        new webpack.optimize.DedupePlugin(),
-        new webpack.optimize.UglifyJsPlugin({
-          compress:{
-            warnings: false
-          }
-      }),
-        new CopyWebpackPlugin([{
-            from: './app/index.html',
-            to: 'index.html'
-        }, {
-            from: './app/main.css',
-            to: 'main.css'
-        }]),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: ['vendor', 'manifest']
+        }),
+        new uglifyJsPlugin({
+            compress: {
+                warnings: false
+            }
+        }),
         new webpack.DefinePlugin({
             'process.env': {
-                'NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-            },
+                NODE_ENV: JSON.stringify('production')
+            }
         }),
-        new webpack.optimize.UglifyJsPlugin()
+        new webpack.HashedModuleIdsPlugin(),
+        new WebpackChunkHash(),
+        new ChunkManifestPlugin({
+            filename: "chunk-manifest.json",
+            manifestVariable: "webpackManifest"
+        })
     ]
-};
+}

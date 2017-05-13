@@ -1,72 +1,46 @@
-var webpack = require('webpack');
-var path = require('path');
-var OpenBrowserPlugin = require('open-browser-webpack-plugin');
-var autoprefixer = require('autoprefixer-loader');
 /*
-* 测试环境配置（此处保留之前对SCSS文件模块的处理）
+* @file webpack配置文件(开发环境)
+* @author tanjizhen
+* @date 2017-04-30
+*
+* 开发环境配置（此处保留之前对SCSS文件模块的处理）
 * 使用autoprefixer自动添加CSS前缀
 * 使用url-loader加载静态资源模块
 * 使用babel-loader进行ES6代码转义
-* 使用open-browser-webpack-plugin插件自动打开默认浏览器查看结果
 * 使用webpack-dev-server进行代码热替换
-* 运行端口：8080
+* 运行端口：3000
 */
+const path = require('path');
+const webpack = require('webpack');
+
 module.exports = {
-    devServer: {
-        historyApiFallback: true,
-        hot: true,
-        inline: true,
-        progress: true,
-        contentBase: './app',
-        port: 8080
+    entry: {
+        bundle: './app/main.jsx',
+        vendor: ['react', 'react-dom', 'jquery', 'react-router', 'redux']
     },
-    entry: [
-        'webpack/hot/dev-server',
-        'webpack-dev-server/client?http://localhost:8080',
-        path.resolve(__dirname, 'app/main.jsx')
-    ],
     output: {
-        path: __dirname + '/build',
-        publicPath: '/',
-        filename: './bundle.js'
-    },
-    module: {
-        loaders: [{
-            test: /\.(png|jpg)$/,
-            include: path.resolve(__dirname, 'app'),
-            loader: 'url-loader'
-        }, {
-            test: /\.css$/,
-            include: path.resolve(__dirname, 'app'),
-            loader: 'style-loader!css-loader!autoprefixer-loader'
-        }, {
-            test: /\.scss$/,
-            include: path.resolve(__dirname, 'app'),
-            loader: 'style-loader!css-loader!autoprefixer-loader!sass-loader'
-        }, {
-            test: /\.less$/,
-            include: path.resolve(__dirname, 'app'),
-            loader: 'style-loader!css-loader!autoprefixer-loader!less-loader'
-        },{
-            test: /\.js[x]?$/,
-            include: path.resolve(__dirname, 'app'),
-            exclude: /node_modules/,
-            loader: 'babel-loader'
-        }, ],
-        // postcss:[autoprefixer({browsers:['last 2 versions']})]
+        path: path.join(__dirname, '/app'),
+        filename: '[name].js'
     },
     resolve: {
-        extensions: ['', '.js', '.jsx'],
+        extensions: ['.js', '.jsx']
+    },
+    module: {
+        rules: [
+            {test: /\.(js|jsx)$/, use: 'babel-loader'},
+            {test: /\.less$/, use: ["style-loader", "css-loader", "autoprefixer-loader", "less-loader",]},
+        ]
     },
     plugins: [
-        new webpack.HotModuleReplacementPlugin(),
-        new OpenBrowserPlugin({
-            url: 'http://localhost:8080'
-        }),
-        new webpack.DefinePlugin({
-            'process.env': {
-                NODE_ENV: JSON.stringify(process.env.NODE_ENV),
-            },
-        }),
-    ]
-};
+        new webpack.optimize.CommonsChunkPlugin({
+            name: ['vendor']
+        })
+    ],
+    devServer: {
+        compress: true, //启用gzip压缩
+        contentBase: path.join(__dirname, "app"),
+        port: 3000, //运行端口3000
+        inline: true,
+        historyApiFallback: true
+    },
+}

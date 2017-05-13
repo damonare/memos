@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Route, IndexRoute, browserHistory, Router} from 'react-router';
-import {createStore} from 'redux';
-import {Provider} from 'react-redux';
+import { Route, IndexRoute, browserHistory, Router } from 'react-router';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 import App from './container/App';
 import AllMemosRoute from './routes/AllMemosRoute';
 import TodoRoute from './routes/TodoRoute';

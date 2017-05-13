@@ -1,6 +1,7 @@
-import React, {Component, PropTypes} from 'react';
-import {findDOMNode} from 'react-dom';
-import {Button, Input} from 'antd';
+import { React, Component } from 'react';
+import { findDOMNode } from 'react-dom';
+import { Button, Input } from 'antd';
+import PropTypes from 'prop-types';
 /*
  * @class Header `头`组件
  */

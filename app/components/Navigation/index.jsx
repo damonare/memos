@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
-import {IndexLink} from 'react-router';
+import { React, Component } from 'react';
+import { IndexLink } from 'react-router';
 import NavLink from './navLink';
-import {Tabs,Button,Row,Col} from 'antd';
+import { Tabs, Button, Row, Col } from 'antd';
 /*
  * @class Navigation `导航`组件
  */

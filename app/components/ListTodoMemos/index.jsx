@@ -1,6 +1,7 @@
-import React, {Component,PropTypes} from 'react';
-import {findDOMNode} from 'react-dom';
-import { Collapse,Row,Col,Icon,Button } from 'antd';
+import { React, Component } from 'react';
+import { findDOMNode } from 'react-dom';
+import { Collapse, Row, Col, Icon, Button } from 'antd';
+import PropTypes from 'prop-types';
 /*
  * @class ListTodoMemos `新建事项`组件
  */

@@ -1,7 +1,8 @@
-import React, {Component, PropTypes} from 'react';
-import {connect} from 'react-redux';
+import { React, Component} from 'react';
+import { connect } from 'react-redux';
 import Navigation from '../components/Navigation';
 import ListDoingMemos from '../components/ListDoingMemos';
+import PropTypes from 'prop-types';
 import {
     deleteTodo,
     changeDoingToDone,
