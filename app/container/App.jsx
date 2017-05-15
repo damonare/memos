@@ -12,6 +12,23 @@ import PropTypes from 'prop-types';
 class App extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            value: 0
+        }
+    }
+    componentDidMount() {
+        this.setState({value: this.state.value + 1});
+        console.log(this.state.value);
+        this.setState({value: this.state.value + 1});
+        console.log(this.state.value);
+        this.setState({value: this.state.value + 1});
+        console.log(this.state.value);
+        setTimeout(() => {
+            this.setState({value: this.state.value + 1});
+            console.log(this.state.value);
+            this.setState({value: this.state.value + 1});
+            console.log(this.state.value);
+        }, 0)
     }
     render() {
         const {dispatch, todolist} = this.props;
