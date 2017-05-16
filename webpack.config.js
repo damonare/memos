@@ -11,7 +11,8 @@
 */
 const path = require('path');
 const webpack = require('webpack');
-
+//CSS 外化
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = {
     entry: {
         bundle: './app/main.jsx',
@@ -27,13 +28,23 @@ module.exports = {
     module: {
         rules: [
             {test: /\.(js|jsx)$/, use: 'babel-loader'},
-            {test: /\.less$/, use: ["style-loader", "css-loader", "autoprefixer-loader", "less-loader",]},
+            {
+                test: /\.less$/,
+                use: ExtractTextPlugin.extract({
+                    use: [
+                        'css-loader',
+                        'postcss-loader',
+                        'less-loader'
+                    ]
+                })
+            },
         ]
     },
     plugins: [
         new webpack.optimize.CommonsChunkPlugin({
             name: ['vendor']
-        })
+        }),
+        new ExtractTextPlugin('global.css')
     ],
     devServer: {
         compress: true, //启用gzip压缩

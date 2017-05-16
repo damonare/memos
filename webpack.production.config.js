@@ -5,26 +5,9 @@
 */
 const path = require('path');
 const webpack = require('webpack');
-// const uglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
-// const ChunkManifestPlugin = require("chunk-manifest-webpack-plugin");
-// const WebpackChunkHash = require("webpack-chunk-hash");
-// ,
-// new uglifyJsPlugin({
-//     compress: {
-//         warnings: false
-//     }
-// }),
-// new webpack.DefinePlugin({
-//     'process.env': {
-//         NODE_ENV: JSON.stringify('production')
-//     }
-// }),
-// new webpack.HashedModuleIdsPlugin(),
-// new WebpackChunkHash(),
-// new ChunkManifestPlugin({
-//     filename: "chunk-manifest.json",
-//     manifestVariable: "webpackManifest"
-// })
+const uglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+
 module.exports = {
     entry: {
         bundle: './app/main.jsx',
@@ -40,12 +23,32 @@ module.exports = {
     module: {
         rules: [
             {test: /\.(js|jsx)$/, use: 'babel-loader'},
-            {test: /\.less$/, use: ["style-loader", "css-loader", "less-loader",]},
+            {test: /\.less$/, use: ["style-loader", "css-loader?minimize", "post-loader", "less-loader",]},
         ]
     },
     plugins: [
         new webpack.optimize.CommonsChunkPlugin({
             name: ['vendor']
-        })
+        }),
+        new uglifyJsPlugin({
+            // 最紧凑的输出
+            beautify: false,
+            // 删除所有的注释
+            comments: false,
+            compress: {
+              // 在UglifyJs删除没有用到的代码时不输出警告
+              warnings: false,
+              // 删除所有的 `console` 语句
+              // 还可以兼容ie浏览器
+              drop_console: true,
+              // 内嵌定义了但是只用到一次的变量
+              collapse_vars: true,
+              // 提取出出现多次但是没有定义成变量去引用的静态值
+              reduce_vars: true,
+            }
+        }),
+        new CopyWebpackPlugin([
+          { from: './app/index.html', to: 'index.html' }
+        ])
     ]
 }

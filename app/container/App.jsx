@@ -17,6 +17,7 @@ class App extends Component {
         }
     }
     componentDidMount() {
+        //react setState 测试用例
         this.setState({value: this.state.value + 1});
         console.log(this.state.value);
         this.setState({value: this.state.value + 1});
@@ -56,7 +57,8 @@ class App extends Component {
 App.propTypes = {
     todolist: PropTypes.arrayOf(PropTypes.shape({todo: PropTypes.string.isRequired, istodo: PropTypes.bool.isRequired, doing: PropTypes.bool.isRequired, done: PropTypes.bool.isRequired}).isRequired).isRequired
 };
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
+    console.log(state)
     return {todolist: state.todolist};
 }
 export default connect(mapStateToProps)(App);

@@ -17,7 +17,7 @@ export default class Navigation extends Component {
                     <Col span={6}>
                         <NavLink to="/">
                             全部&nbsp;
-                            <Button shape="circle" size="small">{this.props.allMemos}</Button>
+                            {this.props.allMemos}
                         </NavLink>
                     </Col>
                     <Col span={6}>
@@ -29,7 +29,6 @@ export default class Navigation extends Component {
                         <NavLink to="/doing">
                             正在进行<span>{this.props.doingNumber}</span>
                         </NavLink>
-
                     </Col>
                     <Col span={6}>
                         <NavLink to="/done">
