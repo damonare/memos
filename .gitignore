@@ -1,4 +1,11 @@
+# FE ignore
 node_modules
+bower_components
+
+# debug ignore
 build/
 npm-debug.log
- 
+dist/
+
+# IDE ignore
+.idea

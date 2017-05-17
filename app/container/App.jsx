@@ -38,11 +38,11 @@ class App extends Component {
         let [todoNumber, doingNumber, doneNumber] = [0, 0, 0];
         todolist.forEach((item) => {
             if (item.istodo) {
-                todoNumber++;
+                todoNumber += 1;
             } else if (item.doing) {
-                doingNumber++;
+                doingNumber += 1;
             } else {
-                doneNumber++;
+                doneNumber += 1;
             }
         });
         return (
