@@ -2,8 +2,12 @@
   "env": {
     "node": true
   },
-  ecmaFeatures: {
-    jsx: true
+  "parserOptions": {
+      "ecmaVersion": 6,
+      "sourceType": "module",
+      "ecmaFeatures": {
+          "jsx": true,
+      }
   },
   "globals": {
   },
@@ -11,9 +15,19 @@
   ],
   "extends": "eslint-config-airbnb",
   "rules": {
-    "comma-dangle": 0,
-    "no-console": 0,
-    "id-length": 0,
-    "react/prop-types": 0 
+    # 允许使用console
+    'no-console': 'off',
+    # 强制使用4个空格缩进
+    'indent': [ 'warn', 4 ],
+    # 强制使用单引号
+    'quotes': [ 'warn', 'single' ],
+    # 禁用换行规则相同
+    'linebreak-style': 0,
+    # jsx缩进
+    "react/jsx-indent": [1, 4],
+    # 组件props缩进
+    "react/jsx-indent-props": [1, 4],
+    # 禁用jsx-scope
+    'react/react-in-jsx-scope': 0,
   }
 }

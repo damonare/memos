@@ -1,4 +1,3 @@
-'use strict';
 /*
  * @author tanjizhen 2016-12-10
  * @version 1.0.0
@@ -26,11 +25,12 @@ export const addTodo = (text) => {
  * @method  search 查找事项
  * @param  {String} text 查找事项的内容
  */
+
 export function search(text) {
-  return {
-      type: Search,
-      text
-  }
+    return {
+        type: Search,
+        text
+    }
 }
 /*
  * @method  changeTodoToDoing 状态由todo转为doing

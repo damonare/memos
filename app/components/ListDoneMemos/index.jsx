@@ -90,8 +90,9 @@ class ListDoneMemos extends Component {
         )
     }
 }
-ListDoneMemos.propTypes={
+
+ListDoneMemos.propTypes = {
     onDoneToDoing: PropTypes.func.isRequired,
-    onDel:PropTypes.func.isRequired
+    onDel: PropTypes.func.isRequired
 }
 export default ListDoneMemos;
