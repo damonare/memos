@@ -1,13 +1,14 @@
 /*
-* @file webpack配置文件(生产环境)
-* @author tanjizhen
-* @date 2017-04-30
-*/
+ * @file webpack配置文件(生产环境)
+ * @author tanjizhen
+ * @date 2017-04-30
+ */
 const path = require('path');
 const webpack = require('webpack');
+//配置压缩js
 const uglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
+//复制html文件到生成目录
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-
 module.exports = {
     entry: {
         bundle: './app/main.jsx',
@@ -23,7 +24,15 @@ module.exports = {
     module: {
         rules: [
             {test: /\.(js|jsx)$/, use: 'babel-loader'},
-            {test: /\.less$/, use: ["style-loader", "css-loader?minimize", "post-loader", "less-loader",]},
+            {
+                test: /\.less$/,
+                use: [
+                    "style-loader",
+                    "css-loader?minimize",
+                    "postcss-loader",
+                    "less-loader"
+                ]
+            },
         ]
     },
     plugins: [

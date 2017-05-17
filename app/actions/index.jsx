@@ -9,18 +9,18 @@ export const Change_Todo_To_Doing = 'Change_Todo_To_Doing';
 export const Change_Doing_To_Done = 'Change_Doing_To_Done';
 export const Change_Done_To_Doing = 'Change_Done_To_Doing';
 export const Change_Doing_To_Todo = 'Change_Doing_To_Todo';
-export const Search='Search';
-export const Delete_Todo='Delete_Todo';
+export const Search = 'Search';
+export const Delete_Todo = 'Delete_Todo';
 /*
  * action 创建函数
  * @method  addTodo添加新事项
  * @param  {String} text 添加事项的内容
  */
-export function addTodo(text) {
-  return {
+export const addTodo = (text) => {
+    return {
       type: Add_Todo,
       text
-  }
+    }
 }
 /*
  * @method  search 查找事项

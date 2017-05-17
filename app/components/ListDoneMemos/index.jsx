@@ -37,7 +37,16 @@ class ListDoneMemos extends Component {
             maxWidth: "800px",
             margin:"0 auto",
         };
-        const panelContent=<Row><Col span={22}><h3>已完成</h3></Col><Col span={2}><Button size="small" shape="circle">{number}</Button></Col></Row>;
+        const panelContent= (
+            <Row>
+                <Col span={22}>
+                    <h3>已完成</h3>
+                </Col>
+                <Col span={2}>
+                    <Button size="small" shape="circle">{number}</Button>
+                </Col>
+            </Row>
+        );
         const Panel = Collapse.Panel;
         return (
             <main>

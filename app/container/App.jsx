@@ -49,7 +49,8 @@ class App extends Component {
         return (
             <div>
                 <Header todolist={todolist} onAdd ={text => dispatch(addTodo(text))} onSearch={text => dispatch(search(text))} onKeyUp={this.props.onKeyUp}/>
-                <Navigation allMemos={allMemos} todoNumber={todoNumber} doingNumber={doingNumber} doneNumber={doneNumber}/> {this.props.children}
+                <Navigation allMemos={allMemos} todoNumber={todoNumber} doingNumber={doingNumber} doneNumber={doneNumber}/>
+                {this.props.children}
             </div>
         );
     }

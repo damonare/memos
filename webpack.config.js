@@ -1,19 +1,12 @@
 /*
-* @file webpack配置文件(开发环境)
-* @author tanjizhen
-* @date 2017-04-30
-*
-* 开发环境配置（此处保留之前对SCSS文件模块的处理）
-* 使用autoprefixer自动添加CSS前缀
-* 使用babel-loader进行ES6代码转义
-* 使用webpack-dev-server进行代码热替换
-* 运行端口：3000
-*/
+ * @file webpack配置文件(开发环境)
+ * @author tanjizhen
+ * @date 2017-04-30
+ */
 const path = require('path');
 const webpack = require('webpack');
-//CSS 外化
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = {
+    devtool: 'sourceMap',
     entry: {
         bundle: './app/main.jsx',
         vendor: ['react', 'react-dom', 'jquery', 'react-router', 'redux']
@@ -27,30 +20,32 @@ module.exports = {
     },
     module: {
         rules: [
-            {test: /\.(js|jsx)$/, use: 'babel-loader'},
+            {
+                test: /\.(js|jsx)$/,
+                use: 'babel-loader'
+            },
             {
                 test: /\.less$/,
-                use: ExtractTextPlugin.extract({
-                    use: [
-                        'css-loader',
+                use: [
+                        'style-loader',
+                        'css-loader?sourceMap',
                         'postcss-loader',
                         'less-loader'
                     ]
-                })
             },
         ]
     },
     plugins: [
         new webpack.optimize.CommonsChunkPlugin({
             name: ['vendor']
-        }),
-        new ExtractTextPlugin('global.css')
+        })
     ],
     devServer: {
         compress: true, //启用gzip压缩
         contentBase: path.join(__dirname, "app"),
         port: 3000, //运行端口3000
         inline: true,
+        hot: true,
         historyApiFallback: true
     },
 }

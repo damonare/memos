@@ -19,7 +19,7 @@ class AllMemosRoute extends Component {
         super(props);
     }
     render() {
-        const {dispatch, todolist} = this.props;
+        const { dispatch, todolist } = this.props;
         return (
             <div>
                 <ListTodoMemos
@@ -40,13 +40,13 @@ class AllMemosRoute extends Component {
 }
 AllMemosRoute.propTypes = {
     todolist:PropTypes.arrayOf(PropTypes.shape({
-    todo: PropTypes.string.isRequired,
-    istodo: PropTypes.bool.isRequired,
-    doing: PropTypes.bool.isRequired,
-    done: PropTypes.bool.isRequired,
+        todo: PropTypes.string.isRequired,
+        istodo: PropTypes.bool.isRequired,
+        doing: PropTypes.bool.isRequired,
+        done: PropTypes.bool.isRequired,
   }).isRequired).isRequired
 };
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
     return {todolist: state.todolist};
 }
 export default connect(mapStateToProps)(AllMemosRoute);

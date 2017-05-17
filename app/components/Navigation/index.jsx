@@ -12,8 +12,8 @@ export default class Navigation extends Component {
     render() {
         const TabPane = Tabs.TabPane;
         return (
-            <div>
-                <Row className="className" type="flex" align="middle" justify="space-around">
+            <div className='navigation'>
+                <Row className='className' type="flex" align="middle" justify="space-around">
                     <Col span={6}>
                         <NavLink to="/">
                             全部&nbsp;
