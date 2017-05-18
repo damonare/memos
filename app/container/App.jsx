@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { Component } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Header from '../components/Header';
 import Navigation from '../components/Navigation';
@@ -71,9 +71,6 @@ App.propTypes = {
         doing: PropTypes.bool.isRequired,
         done: PropTypes.bool.isRequired,
     }).isRequired).isRequired,
-    onKeyUp: PropTypes.func.isRequired,
-    dispatch: PropTypes.fuc.isRequired,
-    children: PropTypes.obj.isRequired,
 };
 const mapStateToProps = (state) => {
     console.log(state);

@@ -29,5 +29,7 @@
     "react/jsx-indent-props": [1, 4],
     # 禁用jsx-scope
     'react/react-in-jsx-scope': 0,
+    # prop-types验证关闭
+    "react/prop-types": 0,
   }
 }

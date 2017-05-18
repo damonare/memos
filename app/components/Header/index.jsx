@@ -13,15 +13,16 @@ class Header extends Component {
         */
         this.state = {
             hidden: true,
-            hint: ''
-        }
+            hint: '',
+        };
+        this.handleKeyUp = this.handleKeyUp.bind(this);
     }
     /*
      * @method  handleKeyUp 响应键盘事件
      */
     handleKeyUp(e) {
-        if (e.keyCode != "13") {
-            this.setState({hidden: true})
+        if (e.keyCode !== '13') {
+            this.setState({ hidden: true });
         }
     }
     /*
@@ -42,14 +43,14 @@ class Header extends Component {
         const inputNode = findDOMNode(this.refs.inputnew);
         const text = inputNode.value.trim();
         if (text.length > 20) {
-            this.setState({hidden: false})
-            this.setState({hint: '请输入20字以内'})
-        } else if (text != "") {
+            this.setState({ hidden: false });
+            this.setState({ hint: '请输入20字以内' });
+        } else if (text !== '') {
             this.props.onAdd(text);
-            this.setState({hidden: true})
+            this.setState({ hidden: true });
         } else {
-            this.setState({hint: '请输入内容'})
-            this.setState({hidden: false})
+            this.setState({ hint: '请输入内容' });
+            this.setState({ hidden: false });
         }
         inputNode.value = '';
     }
@@ -59,34 +60,54 @@ class Header extends Component {
                 <section>
                     <form onSubmit={e => this.handleClick(e)}>
                         <label htmlFor="new-todo">备忘录</label>
-                        <Input onKeyUp={this.handleKeyUp.bind(this)} ref="inputnew" type="text" placeholder="新建事项(20字以内)" defaultValue={this.props.text} id="new-todo" style={{
-                            width: "40%"
-                        }}/>
+                        <Input
+                            onKeyUp={this.handleKeyUp}
+                            ref="inputnew"
+                            type="text"
+                            placeholder="新建事项(20字以内)"
+                            defaultValue={this.props.text}
+                            id="new-todo"
+                            style={{
+                                width: '40%',
+                            }}
+                        />
                         <div>
-                            <Button type="default" ghost onClick={e => this.handleClick(e)}>添加</Button>
-                            <Button type="default" ghost icon="search" onClick={e => this.handleSearch(e)}>搜索</Button>
+                            <Button
+                                type="default"
+                                ghost
+                                onClick={e => this.handleClick(e)}
+                            >添加</Button>
+                            <Button
+                                type="default"
+                                ghost
+                                icon="search"
+                                onClick={e => this.handleSearch(e)}
+                            >搜索</Button>
                         </div>
                     </form>
                 </section>
-                <div className='hint' style={{
-                    display: this.state.hidden
-                        ? "none"
-                        : "inline-block"
-                }}>
+                <div
+                    className="hint"
+                    style={{
+                        display: this.state.hidden
+                        ? 'none'
+                        : 'inline-block',
+                    }}
+                >
                     <div className="test">
-                        <span className="bot"></span>
-                        <span className="top"></span>
+                        <span className="bot" />
+                        <span className="top" />
                     </div>
                     <div>
                         {this.state.hint}
                     </div>
                 </div>
             </header>
-        )
+        );
     }
 }
 Header.propTypes = {
     onAdd: PropTypes.func.isRequired,
-    onSearch: PropTypes.func.isRequired
-}
+    onSearch: PropTypes.func.isRequired,
+};
 export default Header;

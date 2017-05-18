@@ -1,18 +1,19 @@
 import {
-    Add_Todo,
-    Delete_Todo,
-    Change_Todo_To_Doing,
-    Change_Doing_To_Done,
-    Change_Doing_To_Todo,
-    Change_Done_To_Doing,
-    Search
+    ADD_TODO,
+    DELETE_TODO,
+    CHANGE_TODO_TO_DOING,
+    CHANGE_DOING_TO_DONE,
+    CHANGE_DOING_TO_TODO,
+    CAHNGE_DONE_TO_DOING,
+    SEARCH,
 } from '../actions';
+
 let todos;
 (() => {
     if (localStorage.todos) {
-        todos = JSON.parse(localStorage.todos)
+        todos = JSON.parse(localStorage.todos);
     } else {
-        todos = []
+        todos = [];
     }
 })();
 const todolist = (state = todos, action) => {
@@ -23,16 +24,17 @@ const todolist = (state = todos, action) => {
         *  使用ES6展开运算符链接新事项和旧事项
         *  JSON.stringify进行对象深拷贝
         */
-        case Add_Todo:
-            console.log(state)
-            localStorage.setItem('todos', JSON.stringify([
-                ...state, {
-                    todo: action.text,
-                    istodo: true,
-                    doing: false,
-                    done: false
-                }
-            ]));
+        case ADD_TODO:
+            localStorage.setItem('todos',
+                JSON.stringify([
+                    ...state, {
+                        todo: action.text,
+                        istodo: true,
+                        doing: false,
+                        done: false
+                    }
+                ])
+            );
             return [
                 ...state, {
                     todo: action.text,
@@ -44,7 +46,7 @@ const todolist = (state = todos, action) => {
         /*
          * 将todo转为doing状态，注意action.index的类型转换
          */
-        case Change_Todo_To_Doing:
+        case CHANGE_TODO_TO_DOING:
             localStorage.setItem('todos', JSON.stringify([
                 ...state.slice(0, action.index),
                 {
@@ -68,7 +70,7 @@ const todolist = (state = todos, action) => {
         /*
          * 将doing转为done状态
          */
-        case Change_Doing_To_Done:
+        case CHANGE_DOING_TO_DONE:
             localStorage.setItem('todos', JSON.stringify([
                 ...state.slice(0, action.index),
                 {
@@ -92,7 +94,7 @@ const todolist = (state = todos, action) => {
         /*
          * 将done转为doing状态
          */
-        case Change_Done_To_Doing:
+        case CAHNGE_DONE_TO_DOING:
             localStorage.setItem('todos', JSON.stringify([
                 ...state.slice(0, action.index),
                 {
@@ -116,7 +118,7 @@ const todolist = (state = todos, action) => {
         /*
          * 将doing转为todo状态
          */
-        case Change_Doing_To_Todo:
+        case CHANGE_DOING_TO_TODO:
             localStorage.setItem('todos', JSON.stringify([
                 ...state.slice(0, action.index),
                 {
@@ -140,7 +142,7 @@ const todolist = (state = todos, action) => {
         /*
          * 删除某个事项
          */
-        case Delete_Todo:
+        case DELETE_TODO:
             localStorage.setItem('todos', JSON.stringify([
                 ...state.slice(0, action.index),
                 ...state.slice(parseInt(action.index) + 1)
@@ -152,7 +154,7 @@ const todolist = (state = todos, action) => {
         /*
          * 搜索
          */
-        case Search:
+        case SEARCH:
             let text = action.text;
             let reg = eval("/"+text+"/gi");
             return state.filter(item=> item.todo.match(reg));
