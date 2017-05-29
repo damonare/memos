@@ -18,7 +18,17 @@ export const DELETE_TODO = 'Delete_Todo';
 export const addTodo = (text) => {
     return (dispatch, getState) => {
         // 测试异步流
-        console.log(getState())
+        const state = getState();
+        localStorage.setItem('todos',
+            JSON.stringify([
+                ...state.todolist, {
+                    todo: text,
+                    istodo: true,
+                    doing: false,
+                    done: false
+                }
+            ])
+        );
         setTimeout(() => {
             dispatch({
                 type: ADD_TODO,

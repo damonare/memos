@@ -25,16 +25,6 @@ const todolist = (state = todos, action) => {
         *  JSON.stringify进行对象深拷贝
         */
         case ADD_TODO:
-            localStorage.setItem('todos',
-                JSON.stringify([
-                    ...state, {
-                        todo: action.text,
-                        istodo: true,
-                        doing: false,
-                        done: false
-                    }
-                ])
-            );
             return [
                 ...state, {
                     todo: action.text,
