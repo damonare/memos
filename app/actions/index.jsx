@@ -16,9 +16,15 @@ export const DELETE_TODO = 'Delete_Todo';
  * @param  {String} text 添加事项的内容
  */
 export const addTodo = (text) => {
-    return {
-        type: ADD_TODO,
-        text,
+    return (dispatch, getState) => {
+        // 测试异步流
+        console.log(getState())
+        setTimeout(() => {
+            dispatch({
+                type: ADD_TODO,
+                text,
+            });
+        }, 2);
     };
 };
 /*

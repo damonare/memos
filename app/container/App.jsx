@@ -33,7 +33,7 @@ class App extends Component {
         }, 0);
     }
     render() {
-        const { dispatch, todolist } = this.props;
+        const { dispatch, todolist, addTodos } = this.props;
         const allMemos = todolist.length;
         let [todoNumber, doingNumber, doneNumber] = [0, 0, 0];
         todolist.forEach((item) => {
@@ -49,7 +49,7 @@ class App extends Component {
             <div>
                 <Header
                     todolist={todolist}
-                    onAdd={text => dispatch(addTodo(text))}
+                    onAdd={text => addTodos(text)}
                     onSearch={text => dispatch(search(text))}
                     onKeyUp={this.props.onKeyUp}
                 />
@@ -72,9 +72,17 @@ App.propTypes = {
         done: PropTypes.bool.isRequired,
     }).isRequired).isRequired,
 };
+
 const mapStateToProps = (state) => {
-    console.log(state);
     return { todolist: state.todolist };
 };
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addTodos: (text) => {
+            dispatch(addTodo(text));
+        },
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
