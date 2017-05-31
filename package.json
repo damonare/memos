@@ -12,6 +12,7 @@
   "homepage": "http://damonare.cn/memos",
   "dependencies": {
     "antd": "^2.9.3",
+    "immutable": "^3.8.1",
     "jquery": "^3.2.1",
     "prop-types": "^15.5.10",
     "react": "^15.5.4",
