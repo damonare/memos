@@ -45,9 +45,11 @@
     "extract-text-webpack-plugin": "^2.1.0",
     "less": "^2.7.2",
     "less-loader": "^4.0.3",
+    "open-browser-webpack-plugin": "^0.0.5",
     "postcss-loader": "^2.0.5",
     "style-loader": "^0.16.1",
     "webpack": "^2.4.1",
+    "webpack-bundle-analyzer": "^2.8.3",
     "webpack-chunk-hash": "^0.4.0",
     "webpack-dev-server": "^2.4.5"
   }
