@@ -55,6 +55,7 @@ class Header extends Component {
         inputNode.value = '';
     }
     render() {
+				console.log(this.context);
         return (
             <header>
                 <section>

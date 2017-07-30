@@ -33,7 +33,7 @@ class App extends Component {
         }, 0);
     }
     render() {
-        const { dispatch, todolist, addTodos } = this.props;
+        const { searchText, todolist, addTodos } = this.props;
         const allMemos = todolist.length;
         let [todoNumber, doingNumber, doneNumber] = [0, 0, 0];
         todolist.forEach((item) => {
@@ -50,7 +50,7 @@ class App extends Component {
                 <Header
                     todolist={todolist}
                     onAdd={text => addTodos(text)}
-                    onSearch={text => dispatch(search(text))}
+                    onSearch={text => searchText(text)}
                     onKeyUp={this.props.onKeyUp}
                 />
                 <Navigation
@@ -82,6 +82,9 @@ const mapDispatchToProps = (dispatch) => {
         addTodos: (text) => {
             dispatch(addTodo(text));
         },
+				searchText: (text) => {
+					dispatch(search(text))
+				}
     };
 };
 
